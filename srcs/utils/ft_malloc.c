@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 10:23:31 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/11 10:22:45 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 10:35:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <miniRT.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_malloc(size_t size)
+{
+	void	*ptr;
 
-#endif
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		perror("miniRT: malloc error");
+		exit(EXIT_FAILURE);
+	}
+	return (ptr);
+}

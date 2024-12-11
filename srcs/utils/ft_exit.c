@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 10:23:31 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/11 18:05:07 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:09:11 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+void	ft_exit(char *msg, int status)
+{
+}
