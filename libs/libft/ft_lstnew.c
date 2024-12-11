@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/30 11:50:48 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*head;
 
-#endif
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head->content = content;
+	head->next = NULL;
+	head->prev = NULL;
+	return (head);
+}

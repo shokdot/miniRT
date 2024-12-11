@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/26 16:49:57 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+char	*ft_strrchr(const char *str, int c)
+{
+	int	i;
 
-#endif
+	i = ft_strlen(str);
+	while (i >= 0)
+	{
+		if (str[i] == (unsigned char)c)
+			return ((char *)(str + i));
+		i--;
+	}
+	return (0);
+}

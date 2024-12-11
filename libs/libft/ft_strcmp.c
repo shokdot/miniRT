@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/05/30 21:57:52 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/30 21:58:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}

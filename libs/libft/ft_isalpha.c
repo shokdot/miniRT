@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/26 13:07:18 by healeksa          #+#    #+#             */
+/*   Updated: 2024/01/26 13:09:11 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+int	ft_isalpha(int c)
+{
+	return ((c > 64 && c < 91) || (c > 96 && c < 123));
+}

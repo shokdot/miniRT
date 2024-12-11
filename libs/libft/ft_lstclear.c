@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/30 13:41:05 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*present;
 
-#endif
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
+	{
+		present = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = present;
+	}
+	free(*lst);
+}

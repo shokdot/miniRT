@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/26 16:19:10 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*d;
 
-#endif
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (!dest && !src)
+		return (0);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return ((void *)d);
+}

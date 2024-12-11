@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/26 18:30:49 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:11 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+long	ft_atoi(const char *str)
+{
+	int	sign;
+	int	res;
+	int	i;
 
-#endif
+	sign = 1;
+	res = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == 43 || str[i] == 45)
+	{
+		if (str[i] == 45)
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		res *= 10;
+		res += str[i] - '0';
+		i++;
+	}
+	return (res * sign);
+}

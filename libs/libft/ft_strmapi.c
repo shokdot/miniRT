@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 19:09:39 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/28 16:48:53 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	size_t	i;
+	char	*p;
 
-#endif
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	p = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!p)
+		return (NULL);
+	while (s[i])
+	{
+		p[i] = f(i, s[i]);
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
+}
