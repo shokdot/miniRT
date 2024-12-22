@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:20:10 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/22 20:19:02 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/22 22:29:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_free(void **ptr);
 int		ft_strcmp(char *s1, char *s2);
 char	*get_next_line(int fd);
 void	*ft_malloc(size_t size);
-// void	ft_exit(char *msg, int status);
 int		ft_open(const char *pathname, int flags);
+void	ft_err(char *msg, int status);
+
 #endif

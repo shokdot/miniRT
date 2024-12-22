@@ -6,17 +6,18 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:55:35 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/22 22:54:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlen(const char *str) {
-  size_t i;
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-  i = 0;
-  while (str[i])
-    i++;
-  return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

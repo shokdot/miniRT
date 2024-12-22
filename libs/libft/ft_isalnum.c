@@ -6,10 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:53:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 18:34:08 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/22 22:54:20 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isalnum(int c) { return (ft_isdigit(c) || ft_isalpha(c)); }
+int	ft_isalnum(int c)
+{
+	return (ft_isdigit(c) || ft_isalpha(c));
+}

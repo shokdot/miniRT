@@ -6,12 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/22 20:41:30 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/22 21:41:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	args_check(argc, argv);
 }
