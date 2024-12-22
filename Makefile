@@ -11,7 +11,7 @@ OBJ_DIR = build/
 SUBDIRS =
 
 LIBFTPATH = libs/libft/
-#LISTPATH = list_c/
+LISTPATH = libs/list_c/
 
 INCLPATH = includes/ #$(LIBFTPATH) #$(LISTPATH)includes/
 
@@ -38,17 +38,17 @@ DEBUG = -fsanitize=address -g3
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
 
 LIBFT = $(LIBFTPATH)libft.a
-#LIST = $(LISTPATH)liblist.a
+LIST = $(LISTPATH)liblist_c.a
 
-#LIBFLAGS = -L$(LIBFTPATH) -lft # -L$(LISTPATH) -llist  -L$(SETPATH) -lset $(LREADLINE)
+LIBFLAGS = -L$(LIBFTPATH) -l ft  -L$(LISTPATH) -l list_c # -L$(SETPATH) -lset $(LREADLINE)
 
 all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(HEADERS)  Makefile
-	@$(CC) $(CFLAGS) $(INCLPATH) $(OBJ) -o $(NAME)
+$(NAME): $(LIBFT) $(LIST) $(OBJ_DIR) $(OBJ) $(HEADERS)  Makefile
+	@$(CC) $(CFLAGS) $(INCLPATH) $(LIBFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile
@@ -59,25 +59,22 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c $(HEADERS) Makefile
 
 $(LIBFT):
 	@make -C $(LIBFTPATH) all
-	@echo "$(YELLOW) Libfts object files have been created $(RESET)"
 
-# $(LIST) :
-# 	@make -C $(LISTPATH) all
-# 	@echo "$(YELLOW) Lists object files have been created $(RESET)"
-
+$(LIST) :
+	@make -C $(LISTPATH) all
 
 clean :
 	@make -C $(LIBFTPATH) clean
+	@make -C $(LISTPATH) clean
 	@rm -f $(OBJ_DIR)/*.o
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED) Object files have been deleted $(RESET)"
-#@make -C $(LISTPATH) clean
 
 fclean : clean
 	@make -C $(LIBFTPATH) fclean
+	@make -C $(LISTPATH) fclean
 	@rm -f $(NAME)
 	@echo "$(RED) Executable file has been deleted $(RESET)"
-#@make -C $(LISTPATH) fclean
 
 re : fclean all
 

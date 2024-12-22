@@ -3,7 +3,7 @@ GREEN	= \033[1;32m
 YELLOW	= \033[1;33m
 RESET	= \033[0;37m
 
-NAME = list_c.a
+NAME = liblist_c.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -12,9 +12,11 @@ SRC_DIR = srcs
 OBJ_DIR = build
 SUBDIRS = insertion deletion make_node get_index
 
-INCLPATH = ./includes/
+INCLPATH = ../../includes
 INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
+
+LIBFTPATH = ../libft/
 
 SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(wildcard $(SRC_DIR)/*.c))
@@ -29,6 +31,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
+	@echo "$(YELLOW) Compiling List object files $(RESET)"
 	@$(AR) $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "$(GREEN) List lib done! $(RESET)"
