@@ -6,17 +6,17 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 18:38:14 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/24 19:30:41 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/24 19:54:52 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_data_ptr	init_data(void)
+t_tracer_ptr	init_data(void)
 {
-	t_data_ptr	data;
+	t_tracer_ptr	tracer;
 
-	data = (t_data_ptr)ft_malloc(sizeof(t_data));
-	data->fd = 0;
-	return (data);
+	tracer = (t_tracer_ptr)ft_malloc(sizeof(t_tracer));
+	tracer->fd = 0;
+	return (tracer);
 }
