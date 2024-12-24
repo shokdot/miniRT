@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/25 01:16:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/25 02:58:34 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	parse_objects(char **line, t_tracer_ptr tracer)
 		printf("Camera\n");
 	else if (ft_strcmp(line[0], "sp") == 0)
 		printf("Sphere\n");
+	else if (ft_strcmp(line[0], "pl") == 0)
+		printf("Plane\n");
+	else if (ft_strcmp(line[0], "cy") == 0)
+		printf("Cylinder\n");
 	else
 	{
 		close(tracer->fd);
@@ -45,16 +49,15 @@ void	parse_line(t_tracer_ptr tracer)
 	while (1)
 	{
 		line = get_next_line(tracer->fd);
-		if (!line)
-			break ;
-		if (!line[0])
+		if (!line || !line[0])
 		{
-			printf("mi ban enchi\n");
-			break ;
+			free(tracer); // check in case of empty error and leaks......
+			return ;
+			// ft_err("some problem", 2);
 		}
 		splited_line = ft_split(line, ' ');
 		parse_objects(splited_line, tracer);
-		ft_free((void **)&line);
+		ft_free((void **)&line); /// check if unknown symbol and # give
 	}
 }
 

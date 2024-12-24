@@ -7,8 +7,8 @@ SKY		= \033[1;36m
 NAME = miniRT
 
 SRC_DIR = srcs/
-OBJ_DIR = build/
-SUBDIRS = init_data parsing
+OBJ_DIR = build
+SUBDIRS = init_data parsing utils
 
 LIBFTPATH = libs/libft/
 LISTPATH = libs/list_c/
@@ -40,15 +40,15 @@ HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
 LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)liblist_c.a
 
-LIBFLAGS = -L$(LIBFTPATH) -l ft  -L$(LISTPATH) -l list_c # -L$(SETPATH) -lset $(LREADLINE)
+LIBFLAGS = -L$(LISTPATH) -l list_c -L$(LIBFTPATH) -l ft  # -L$(SETPATH) -lset $(LREADLINE)
 
 all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(LIBFT) $(LIST) $(OBJ_DIR) $(OBJ) $(HEADERS)  Makefile
-	@$(CC) $(CFLAGS) $(INCLPATH) $(LIBFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT)  $(HEADERS)  Makefile
+	@$(CC) $(CFLAGS) $(INCLPATH) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile

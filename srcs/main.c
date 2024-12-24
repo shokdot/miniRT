@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/25 00:51:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/25 02:58:49 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 {
 	t_tracer_ptr	tracer;
 
-	atexit(foo);
+	// atexit(foo);
 	args_check(argc, argv);
 	tracer = init_data();
 	parsing(argv[1], tracer);

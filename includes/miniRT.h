@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/24 19:54:24 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/25 01:37:20 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ struct					s_tracer
 void					args_check(int argc, char **argv);
 t_tracer_ptr			init_data(void);
 void					parsing(char *filename, t_tracer_ptr data);
+
+// utils
+void					free_matrix(char **matrix);
 
 #endif
