@@ -8,7 +8,7 @@ NAME = miniRT
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
-SUBDIRS = parsing
+SUBDIRS = init_data parsing
 
 LIBFTPATH = libs/libft/
 LISTPATH = libs/list_c/

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/24 19:38:30 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/24 19:38:52 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+void	parsing(char *filename, t_data_ptr data)
 {
-	t_data_ptr	data;
-
-	args_check(argc, argv);
-	data = init_data();
-	parsing(argv[1], data);
+	// char	*line;
+	data->fd = ft_open(filename, O_RDONLY);
+	close(data->fd);
+	// line = get_next_line(data->fd);
 }
