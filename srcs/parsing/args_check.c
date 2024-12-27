@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:41:26 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/22 22:53:41 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/27 22:26:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	args_check(int argc, char **argv)
 {
 	char	*filename;
 
-	(void)argv;
 	if (argc > 2)
 		ft_err("Arguments too many!", 1);
 	else if (argc <= 1)

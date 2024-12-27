@@ -48,14 +48,14 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT)  $(HEADERS)  Makefile
-	@$(CC) $(CFLAGS) $(INCLPATH) $(OBJ) $(LIBFLAGS) -o $(NAME)
+	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile
-	@$(CC) $(CFLAGS) $(INCLPATH) -c $< -o $@
+	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c $(HEADERS) Makefile
-	@$(CC) $(CFLAGS) $(INCLPATH) -c $< -o $@
+	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFTPATH) all
