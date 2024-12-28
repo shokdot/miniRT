@@ -6,22 +6,29 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/27 22:35:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/28 22:25:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	print_arr(char **line)
+bool	determine_object(char **line)
 {
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		printf("%s\n", line[i]);
-		i++;
-	}
+	if (ft_strcmp(line[0], "A") == 0 || ft_strcmp(line[0], "A\n") == 0)
+		printf("Ambinet Light\n");
+	else if (ft_strcmp(line[0], "L") == 0 || ft_strcmp(line[0], "L\n") == 0)
+		printf("Light\n");
+	else if (ft_strcmp(line[0], "C") == 0 || ft_strcmp(line[0], "C\n") == 0)
+		printf("Camera\n");
+	else if (ft_strcmp(line[0], "sp") == 0 || ft_strcmp(line[0], "sp\n") == 0)
+		printf("Sphere\n");
+	else if (ft_strcmp(line[0], "pl") == 0 || ft_strcmp(line[0], "pl\n") == 0)
+		printf("Plane\n");
+	else if (ft_strcmp(line[0], "cy") == 0 || ft_strcmp(line[0], "cy") == 0)
+		printf("Cylinder\n");
+	else
+		return (false);
+	return (true);
 }
 
 void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
@@ -33,25 +40,11 @@ void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 	}
 	else
 	{
-		printf("line == %s\n", line[0]);
 		*is_empty = 0;
-		if (ft_strcmp(line[0], "A") == 0 || ft_strcmp(line[0], "A\n") == 0)
-			printf("Ambinet Light\n");
-		else if (ft_strcmp(line[0], "L") == 0 || ft_strcmp(line[0], "L\n") == 0)
-			printf("Light\n");
-		else if (ft_strcmp(line[0], "C") == 0 || ft_strcmp(line[0], "C\n") == 0)
-			printf("Camera\n");
-		else if (ft_strcmp(line[0], "sp") == 0 || ft_strcmp(line[0],
-				"sp\n") == 0)
-			printf("Sphere\n");
-		else if (ft_strcmp(line[0], "pl") == 0 || ft_strcmp(line[0],
-				"pl\n") == 0)
-			printf("Plane\n");
-		else if (ft_strcmp(line[0], "cy") == 0 || ft_strcmp(line[0], "cy") == 0)
-			printf("Cylinder\n");
-		else
+		if (!determine_object(line))
 		{
 			close(tracer->fd);
+			free_matrix(line);
 			ft_free((void **)&tracer);
 			ft_err("Map: Unknown Symbol", 2);
 		}
@@ -70,18 +63,26 @@ void	parse_line(t_tracer_ptr tracer)
 	while (1)
 	{
 		line = get_next_line(tracer->fd);
-		if (!line || !line[0])
+		if (is_line_empty(line))
 		{
 			if (is_empty)
 			{
-				free(tracer);
+				close(tracer->fd);
+				ft_free((void **)&tracer);
 				ft_err("Map: Empty!", 1);
 			}
 			return ;
 		}
 		splited_line = ft_split(line, ' ');
-		print_arr(splited_line);
 		ft_free((void **)&line);
+		if (is_matrix_empty(splited_line))
+		{
+			free_matrix(splited_line);
+			close(tracer->fd);
+			ft_free((void **)&tracer);
+			ft_err("Map: Empty!", 1);
+		}
+		print_matrix(splited_line);
 		parse_objects(splited_line, tracer, &is_empty);
 	}
 }

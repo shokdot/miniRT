@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/28 22:26:43 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/28 20:30:33 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/28 21:00:41 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	foo(void)
+void	print_matrix(char **line)
 {
-	system("leaks miniRT");
-}
+	int	i;
 
-int	main(int argc, char **argv)
-{
-	t_tracer_ptr	tracer;
-
-	// atexit(foo);
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
+	i = 0;
+	while (line[i])
+	{
+		printf("%s\n", line[i]);
+		i++;
+	}
+	printf("\n");
 }

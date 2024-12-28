@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   empty_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/28 22:26:43 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/28 21:57:02 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/28 22:24:46 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	foo(void)
+bool	is_line_empty(char *line)
 {
-	system("leaks miniRT");
+	return (!line || !line[0]);
 }
 
-int	main(int argc, char **argv)
+bool	is_matrix_empty(char **matrix)
 {
-	t_tracer_ptr	tracer;
-
-	// atexit(foo);
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
+	return (!matrix || !matrix[0] || !matrix[0][0]);
 }
