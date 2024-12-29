@@ -6,26 +6,26 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 16:33:44 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/29 17:34:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-bool	determine_object(char **line)
+bool	determine_object(char **line, t_tracer_ptr tracer)
 {
 	if (ft_strcmp(line[0], "A") == 0 || ft_strcmp(line[0], "A\n") == 0)
-		printf("Ambinet Light\n");
+		parse_ambient(line, tracer);
 	else if (ft_strcmp(line[0], "L") == 0 || ft_strcmp(line[0], "L\n") == 0)
-		printf("Light\n");
+		parse_light(line, tracer);
 	else if (ft_strcmp(line[0], "C") == 0 || ft_strcmp(line[0], "C\n") == 0)
-		printf("Camera\n");
+		parse_camera(line, tracer);
 	else if (ft_strcmp(line[0], "sp") == 0 || ft_strcmp(line[0], "sp\n") == 0)
-		printf("Sphere\n");
+		parse_sphere(line, tracer);
 	else if (ft_strcmp(line[0], "pl") == 0 || ft_strcmp(line[0], "pl\n") == 0)
-		printf("Plane\n");
+		parse_plane(line, tracer);
 	else if (ft_strcmp(line[0], "cy") == 0 || ft_strcmp(line[0], "cy") == 0)
-		printf("Cylinder\n");
+		parse_cylinder(line, tracer);
 	else
 		return (false);
 	return (true);
@@ -38,7 +38,7 @@ void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 	else
 	{
 		*is_empty = 0;
-		if (!determine_object(line))
+		if (!determine_object(line, tracer))
 		{
 			free_matrix(line);
 			close(tracer->fd);

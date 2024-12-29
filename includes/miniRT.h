@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 16:33:07 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/29 17:40:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ void					empty_map_free(t_tracer_ptr tracer);
 
 bool					is_line_empty(char *line);
 bool					is_matrix_empty(char **matrix);
+
+// parse objects
+void					parse_ambient(char **line, t_tracer_ptr tracer UNUSED);
+void					parse_light(char **line, t_tracer_ptr tracer UNUSED);
+void					parse_camera(char **line, t_tracer_ptr tracer UNUSED);
+
+// parse figures
+void					parse_sphere(char **line, t_tracer_ptr tracer UNUSED);
+void					parse_plane(char **line, t_tracer_ptr tracer UNUSED);
+void					parse_cylinder(char **line, t_tracer_ptr tracer UNUSED);
+
 #endif

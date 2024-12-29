@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_objects.c                                  :+:      :+:    :+:   */
+/*   parse_figure.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 17:52:28 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/29 17:25:28 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/29 17:34:25 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parse_ambient(char **line, t_tracer_ptr tracer UNUSED)
+void	parse_sphere(char **line, t_tracer_ptr tracer UNUSED)
 {
 	(void)line;
-	printf("Ambinet Light\n");
+	printf("Sphere\n");
 }
 
-void	parse_light(char **line, t_tracer_ptr tracer UNUSED)
+void	parse_plane(char **line, t_tracer_ptr tracer UNUSED)
 {
 	(void)line;
-	printf("Light\n");
+	printf("Plane\n");
 }
 
-void	parse_camera(char **line, t_tracer_ptr tracer UNUSED)
+void	parse_cylinder(char **line, t_tracer_ptr tracer UNUSED)
 {
 	(void)line;
-	printf("Camera\n");
+	printf("Cylinder\n");
 }
