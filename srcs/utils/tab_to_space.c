@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_objects.c                                  :+:      :+:    :+:   */
+/*   tab_to_space.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 18:13:01 by healeksa         ###   ########.fr       */
+/*   Created: 2024/12/29 18:36:13 by healeksa          #+#    #+#             */
+/*   Updated: 2024/12/29 18:42:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parameter_check(char **line, int count)
+int	is_spacec(char c)
+{
+	return (c == '\t' || c == '\r' || c == '\v' || c == '\f');
+}
+
+void	tab_to_space(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i])
-		i++;
-	if (count != i)
 	{
-		ft_err("Wrong parameter", 2);
+		if (is_spacec(line[i]))
+		{
+			line[i] = ' ';
+		}
+		i++;
 	}
-}
-
-void	parse_ambient(char **line, t_tracer_ptr tracer UNUSED)
-{
-	parameter_check(line, 3);
-	printf("Ambinet Light\n");
-}
-
-void	parse_light(char **line, t_tracer_ptr tracer UNUSED)
-{
-	(void)line;
-	parameter_check(line, 4);
-	printf("Light\n");
-}
-
-void	parse_camera(char **line, t_tracer_ptr tracer UNUSED)
-{
-	(void)line;
-	parameter_check(line, 4);
-	printf("Camera\n");
 }

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 17:34:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/29 18:47:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	parse_line(t_tracer_ptr tracer)
 				empty_map_free(tracer);
 			return ;
 		}
+		tab_to_space(line);
 		splited_line = ft_split(line, ' ');
 		ft_free((void **)&line);
 		if (is_matrix_empty(splited_line))
@@ -73,6 +74,7 @@ void	parse_line(t_tracer_ptr tracer)
 			free_matrix(splited_line);
 			empty_map_free(tracer);
 		}
+		print_matrix(splited_line);
 		parse_objects(splited_line, tracer, &is_empty);
 	}
 }
