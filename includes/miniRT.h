@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/28 22:14:24 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/29 16:33:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void					parsing(char *filename, t_tracer_ptr data);
 // utils
 void					free_matrix(char **matrix);
 void					print_matrix(char **line);
+void					empty_map_free(t_tracer_ptr tracer);
 
 bool					is_line_empty(char *line);
 bool					is_matrix_empty(char **matrix);
-
 #endif

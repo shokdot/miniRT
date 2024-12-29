@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/28 22:25:45 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/29 16:33:44 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ bool	determine_object(char **line)
 void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 {
 	if (ft_strcmp(line[0], "\n") == 0 || line[0][0] == '#')
-	{
-		free_matrix(line);
-		return ;
-	}
+		return (free_matrix(line));
 	else
 	{
 		*is_empty = 0;
 		if (!determine_object(line))
 		{
-			close(tracer->fd);
 			free_matrix(line);
+			close(tracer->fd);
 			ft_free((void **)&tracer);
 			ft_err("Map: Unknown Symbol", 2);
 		}
@@ -66,11 +63,7 @@ void	parse_line(t_tracer_ptr tracer)
 		if (is_line_empty(line))
 		{
 			if (is_empty)
-			{
-				close(tracer->fd);
-				ft_free((void **)&tracer);
-				ft_err("Map: Empty!", 1);
-			}
+				empty_map_free(tracer);
 			return ;
 		}
 		splited_line = ft_split(line, ' ');
@@ -78,11 +71,8 @@ void	parse_line(t_tracer_ptr tracer)
 		if (is_matrix_empty(splited_line))
 		{
 			free_matrix(splited_line);
-			close(tracer->fd);
-			ft_free((void **)&tracer);
-			ft_err("Map: Empty!", 1);
+			empty_map_free(tracer);
 		}
-		print_matrix(splited_line);
 		parse_objects(splited_line, tracer, &is_empty);
 	}
 }
