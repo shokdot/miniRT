@@ -6,13 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/29 18:13:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:08:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parameter_check(char **line, int count)
+void	token_count(char **line, int count)
 {
 	int	i;
 
@@ -27,20 +27,20 @@ void	parameter_check(char **line, int count)
 
 void	parse_ambient(char **line, t_tracer_ptr tracer UNUSED)
 {
-	parameter_check(line, 3);
+	token_count(line, 3);
 	printf("Ambinet Light\n");
 }
 
 void	parse_light(char **line, t_tracer_ptr tracer UNUSED)
 {
 	(void)line;
-	parameter_check(line, 4);
+	token_count(line, 4);
 	printf("Light\n");
 }
 
 void	parse_camera(char **line, t_tracer_ptr tracer UNUSED)
 {
 	(void)line;
-	parameter_check(line, 4);
+	token_count(line, 4);
 	printf("Camera\n");
 }
