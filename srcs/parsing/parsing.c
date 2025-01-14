@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/30 15:42:08 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:49:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 		return (free_matrix(line));
 	else
 	{
-		*is_empty = 0;
+		*is_empty = false;
 		if (!determine_object(line, tracer))
 		{
 			free_matrix(line);
@@ -56,8 +56,8 @@ void	parse_line(t_tracer_ptr tracer)
 	bool	is_empty;
 
 	line = NULL;
-	is_empty = 1;
-	while (1)
+	is_empty = true;
+	while (true)
 	{
 		line = get_next_line(tracer->fd);
 		if (is_line_empty(line))
