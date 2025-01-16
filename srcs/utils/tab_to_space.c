@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:36:13 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/30 15:41:20 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/15 01:30:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	tab_to_space(char *line)
 		{
 			line[i] = ' ';
 		}
+		else if (i != 0 && line[i] == '\n')
+			line[i] = '\0';
 		i++;
 	}
 }
