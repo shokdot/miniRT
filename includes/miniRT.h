@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 17:14:18 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:16:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SPHERE_TOKEN 4
 # define PLANE_TOKEN 4
 # define CYLINDER_TOKEN 6
+# define COLOR_TOKEN 3
 
 # define UNUSED __attribute__((unused))
 
@@ -56,6 +57,7 @@ bool					skip_check(char **line);
 void					parse_ambient(char **line, t_tracer_ptr tracer);
 void					parse_light(char **line, t_tracer_ptr tracer);
 void					parse_camera(char **line, t_tracer_ptr tracer);
+bool					parse_color(char *line);
 
 // parse figures
 void					parse_sphere(char **line, t_tracer_ptr tracer UNUSED);
