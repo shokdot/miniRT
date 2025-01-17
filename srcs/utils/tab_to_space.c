@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:36:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/15 01:30:27 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:58:31 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	tab_to_space(char *line)
 	while (line[i])
 	{
 		if (is_spaces(line[i]))
-		{
 			line[i] = ' ';
-		}
 		else if (i != 0 && line[i] == '\n')
 			line[i] = '\0';
 		i++;
