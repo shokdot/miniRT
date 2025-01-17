@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 16:58:51 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:14:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define AMBIENT_TOKEN 3
+# define CAMERA_TOKEN 4
+# define LIGHT_TOKEN 3
+# define SPHERE_TOKEN 4
+# define PLANE_TOKEN 4
+# define CYLINDER_TOKEN 6
 
 # define UNUSED __attribute__((unused))
 
