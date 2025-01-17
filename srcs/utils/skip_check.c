@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:48:39 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 16:58:13 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:36:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	comment_check(char **line)
 	i = 0;
 	while (line[i])
 	{
-		if (ft_strchr(line[i], (int)'#'))
+		if (ft_strchr(line[i], '#'))
 			return (true);
 		i++;
 	}
