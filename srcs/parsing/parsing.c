@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 17:39:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:14:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	parse_line(t_tracer_ptr tracer)
 		ft_free((void **)&line);
 		if (is_matrix_empty(splited_line))
 		{
-			free_line_map(line, tracer);
+			free_line_map(splited_line, tracer);
 			ft_err("Map: Empty!", 1);
 		}
 		parse_objects(splited_line, tracer, &is_empty);
