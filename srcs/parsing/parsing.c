@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/14 18:49:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:59:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	determine_object(char **line, t_tracer_ptr tracer)
 
 void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 {
-	if (ft_strcmp(line[0], "\n") == 0 || line[0][0] == '#')
+	if (skip_check(line))
 		return (free_matrix(line));
 	else
 	{
