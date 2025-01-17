@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 16:59:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:39:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ void	parse_objects(char **line, t_tracer_ptr tracer, bool *is_empty)
 		*is_empty = false;
 		if (!determine_object(line, tracer))
 		{
-			free_matrix(line);
-			close(tracer->fd);
-			ft_free((void **)&tracer);
+			free_line_map(line, tracer);
 			ft_err("Map: Unknown Symbol", 2);
 		}
 	}
@@ -71,8 +69,8 @@ void	parse_line(t_tracer_ptr tracer)
 		ft_free((void **)&line);
 		if (is_matrix_empty(splited_line))
 		{
-			free_matrix(splited_line);
-			empty_map_free(tracer);
+			free_line_map(line, tracer);
+			ft_err("Map: Empty!", 1);
 		}
 		parse_objects(splited_line, tracer, &is_empty);
 	}
