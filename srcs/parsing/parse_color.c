@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:30:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 21:13:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/01/18 13:11:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ bool	parse_color(char *line)
 		return (false);
 	splited_color = ft_split(line, ',');
 	if (count_token(splited_color) != COLOR_TOKEN)
+		return (free_matrix(splited_color), false);
+	else if (ft_strlen(splited_color[0]) > 4 || ft_strlen(splited_color[1]) > 4
+		|| ft_strlen(splited_color[2]) > 4)
 		return (free_matrix(splited_color), false);
 	red = ft_atoi(splited_color[0]);
 	green = ft_atoi(splited_color[1]);
