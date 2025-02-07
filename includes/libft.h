@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:20:10 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/22 22:29:16 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/07 20:51:04 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ char	*get_next_line(int fd);
 void	*ft_malloc(size_t size);
 int		ft_open(const char *pathname, int flags);
 void	ft_err(char *msg, int status);
+double	ft_atof(char *str);
 
 #endif
