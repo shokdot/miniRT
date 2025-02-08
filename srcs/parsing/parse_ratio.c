@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 22:18:22 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/08 22:47:55 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:59:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ static bool	is_valid_ratio(char *line)
 	return (true);
 }
 
+static bool	out_of_range(double ratio)
+{
+	if (ratio < 0.0 || ratio > 1.0)
+		return (true);
+	return (false);
+}
+
 bool	parse_ratio(char *line)
 {
 	double	ratio;
@@ -39,7 +46,7 @@ bool	parse_ratio(char *line)
 	if (!is_valid_ratio(line))
 		return (false);
 	ratio = ft_atof(line);
-	if (ratio < 0.0 || ratio > 1.0)
+	if (out_of_range(ratio))
 		return (false);
 	return (true);
 }
