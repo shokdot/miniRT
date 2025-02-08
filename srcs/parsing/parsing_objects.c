@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 22:24:07 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:49:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	parse_ambient(char **line, t_tracer_ptr tracer)
 	{
 		free_line_map(line, tracer);
 		ft_err("Ambient: arguments!", 3);
+	}
+	else if (!parse_ratio(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Ambient: light ratio!", 3);
 	}
 	else if (!parse_color(line[2]))
 	{
