@@ -22,7 +22,7 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 PLATFORM = $(shell uname -s)
 
 ifeq ($(PLATFORM), Darwin)
-	INCLPATH += libs/mlx_mac/
+# INCLPATH += libs/mlx_mac/
 	MLXPATH = libs/mlx_mac/
 	XFLAGS = -framework OpenGL -framework AppKit
 else

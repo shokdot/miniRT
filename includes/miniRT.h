@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/08 22:31:34 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:20:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <libft.h>
 # include <list_c.h>
+# include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -65,5 +66,7 @@ bool					parse_ratio(char *line);
 void					parse_sphere(char **line, t_tracer_ptr tracer UNUSED);
 void					parse_plane(char **line, t_tracer_ptr tracer UNUSED);
 void					parse_cylinder(char **line, t_tracer_ptr tracer UNUSED);
+
+void					init_mlx(void);
 
 #endif

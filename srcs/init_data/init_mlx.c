@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/09 20:07:43 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/09 20:04:45 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/09 20:10:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	foo(void)
+void	init_mlx(void)
 {
-	system("leaks miniRT");
-}
+	void	*mlx;
 
-int	main(int argc, char **argv)
-{
-	t_tracer_ptr	tracer;
-
-	// atexit(foo);
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	// mlx_init
-	init_mlx();
-	printf("MAP is OK\n");
+	void *mlx_win UNUSED;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }
