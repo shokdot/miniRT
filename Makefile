@@ -13,59 +13,63 @@ SUBDIRS = init_data parsing utils
 LIBFTPATH = libs/libft/
 LISTPATH = libs/list_c/
 
-INCLPATH = includes/ #$(LIBFTPATH) #$(LISTPATH)includes/
+INCLPATH = includes/
 
 SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-# UNAME = $(shell uname -s)
-# ARCH = $(shell uname -m)
-# ifeq ($(UNAME), Darwin)
-# 	ifeq ($(ARCH), arm64)
-# 		LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
-# 		INCLPATH += /opt/homebrew/Cellar/readline/8.2.13/include
-# 	else
-# 		LREADLINE = -Lreadline_local/lib -lreadline
-# 		INCLPATH += ./readline_local/include/
-# 	endif
-# else
-# 	LREADLINE = -Lreadline_local -lreadline
-# endif
+PLATFORM = $(shell uname -s)
 
-CFLAGS = -Wall -Wextra -Werror -I
+ifeq ($(PLATFORM), Darwin)
+	INCLPATH += libs/mlx_mac/
+	MLXPATH = libs/mlx_mac/
+	XFLAGS = -framework OpenGL -framework AppKit
+else
+#INCLPATH += libs/mlx_mac/
+#MLXPATH = libs/mlx_mac/
+#XFLAGS = -framework OpenGL -framework AppKit
+endif
+
+CFLAGS = -Wall -Wextra -Werror
 DEBUG = -fsanitize=address -g3
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
+CMP_HEADERS = $(patsubst %,-I%, $(INCLPATH))
 
 LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)liblist_c.a
+MLX = $(MLXPATH)libmlx.a
 
-LIBFLAGS = -L$(LISTPATH) -l list_c -L$(LIBFTPATH) -l ft  # -L$(SETPATH) -lset $(LREADLINE)
+LIBFLAGS = -L$(LISTPATH) -l list_c -L$(LIBFTPATH) -l ft -L$(MLXPATH) -l mlx $(XFLAGS)
 
 all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT)  $(HEADERS)  Makefile
-	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) $(OBJ) $(LIBFLAGS) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT) $(MLX)  $(HEADERS)  Makefile
+	@$(CC) $(DEBUG) $(CFLAGS) $(CMP_HEADERS) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile
-	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) -c $< -o $@
+	@$(CC) $(DEBUG) $(CFLAGS) $(CMP_HEADERS) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c $(HEADERS) Makefile
-	@$(CC) $(DEBUG) $(CFLAGS) $(INCLPATH) -c $< -o $@
+	@$(CC) $(DEBUG) $(CFLAGS) $(CMP_HEADERS) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFTPATH) all
 
-$(LIST) :
+$(LIST):
 	@make -C $(LISTPATH) all
+
+$(MLX):
+	@make -C $(MLXPATH) all
 
 clean :
 	@make -C $(LIBFTPATH) clean
 	@make -C $(LISTPATH) clean
+	@make -C $(MLXPATH) clean
 	@rm -f $(OBJ_DIR)/*.o
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED) Object files have been deleted $(RESET)"
@@ -85,6 +89,4 @@ push:
 	git commit -m "$$msg"; \
 	git push -u origin "$$branch"
 
-#config:
-
-.PHONY : all clean fclean re push #config
+.PHONY : all clean fclean re push
