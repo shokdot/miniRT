@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/09 20:20:05 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:34:30 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void					parse_camera(char **line, t_tracer_ptr tracer);
 bool					parse_color(char *line);
 bool					parse_fov(char *line);
 bool					parse_ratio(char *line);
+bool					parse_cords(char *line);
 
 // parse figures
 void					parse_sphere(char **line, t_tracer_ptr tracer UNUSED);

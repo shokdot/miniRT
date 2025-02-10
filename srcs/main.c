@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/09 20:07:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:34:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int argc, char **argv)
 	tracer = init_data();
 	parsing(argv[1], tracer);
 	// mlx_init
-	init_mlx();
+	// init_mlx();
 	printf("MAP is OK\n");
 }
