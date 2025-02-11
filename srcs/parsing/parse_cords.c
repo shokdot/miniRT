@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:31:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/11 00:27:34 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:42:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ bool	parse_cords(char *line)
 
 	i = 0;
 	splited_line = ft_split(line, ',');
-	if (count_token(splited_line) != 3) // fix
+	if (count_token(splited_line) != CORDS_TOKEN)
 		return (false);
-	while (i < 3)
+	while (i < CORDS_TOKEN)
 		if (!is_valid_cords(splited_line[i++]))
 			return (false);
-	print_matrix(splited_line);
 	return (true);
 }

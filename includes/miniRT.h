@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/10 10:34:30 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:38:47 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define PLANE_TOKEN 4
 # define CYLINDER_TOKEN 6
 # define COLOR_TOKEN 3
+# define CORDS_TOKEN 3
 
 # define UNUSED __attribute__((unused))
 
