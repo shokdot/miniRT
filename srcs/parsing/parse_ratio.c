@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 22:18:22 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/08 22:59:45 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:44:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 static bool	is_valid_ratio(char *line)
 {
-	int	i;
-	int	dot_count;
+	int		i;
+	int		dot_count;
+	bool	has_digit;
 
 	dot_count = 0;
+	has_digit = false;
 	i = 0;
 	if (ft_strlen(line) > 8)
 		return (false);
 	while (line[i])
 	{
+		if (ft_isdigit(line[i]))
+			has_digit = true;
 		if (line[i] == '.' && ++dot_count > 1)
 			return (false);
 		if (!(ft_isdigit(line[i]) || line[i] == '.'))
 			return (false);
 		i++;
 	}
-	return (true);
+	return (has_digit);
 }
 
 static bool	out_of_range(double ratio)

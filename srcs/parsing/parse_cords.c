@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:31:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/11 18:36:15 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:39:20 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ bool	parse_cords(char *line)
 	while (i < CORDS_TOKEN)
 		if (!is_valid_cords(splited_line[i++]))
 			return (false);
-	printf("%f\n", ft_atof(splited_line[0]));
 	return (true);
 }
