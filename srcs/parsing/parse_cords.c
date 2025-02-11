@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 10:31:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/11 11:42:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:36:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static bool	is_valid_cords(char *line)
 	has_digit = false;
 	dot_count = 0;
 	i = 0;
+	if (ft_strlen(line) > 20)
+		return (false);
 	if (line[i] == '+' || line[i] == '-')
 		i++;
 	while (line[i])
@@ -48,5 +50,6 @@ bool	parse_cords(char *line)
 	while (i < CORDS_TOKEN)
 		if (!is_valid_cords(splited_line[i++]))
 			return (false);
+	printf("%f\n", ft_atof(splited_line[0]));
 	return (true);
 }
