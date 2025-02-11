@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/11 00:16:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:57:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	parse_camera(char **line, t_tracer_ptr tracer)
 	{
 		free_line_map(line, tracer);
 		ft_err("Camera: arguments!", 3);
+	}
+	else if (!parse_cords(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Camera: coordinates!", 3);
 	}
 	else if (!parse_fov(line[3]))
 	{
