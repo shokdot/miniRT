@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:25:28 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/11 19:26:10 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:34:47 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	parse_plane(char **line, t_tracer_ptr tracer UNUSED)
 		ft_err("Plane: arguments!", 3);
 	}
 	else if (!parse_cords(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Plane: coordinates!", 3);
+	}
+	else if (!parse_norm_vec(line[2]))
 	{
 		free_line_map(line, tracer);
 		ft_err("Plane: coordinates!", 3);
