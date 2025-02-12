@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:30:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/18 13:11:36 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:50:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool	parse_color(char *line)
 	int		green;
 	int		blue;
 
-	splited_color = NULL;
 	if (!is_valid_color(line))
 		return (false);
 	splited_color = ft_split(line, ',');
