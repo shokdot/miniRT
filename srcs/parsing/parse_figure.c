@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:25:28 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 17:15:20 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:26:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@ void	parse_sphere(char **line, t_tracer_ptr tracer UNUSED)
 {
 	if (count_token(line) != SPHERE_TOKEN)
 	{
-		// impl
+		free_line_map(line, tracer);
+		ft_err("Sphere: arguments!", 3);
+	}
+	else if (!parse_cords(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Sphere: coordinates!", 3);
+	}
+	else if (!parse_color(line[3]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Sphere: color!", 3);
 	}
 }
 
@@ -24,7 +35,18 @@ void	parse_plane(char **line, t_tracer_ptr tracer UNUSED)
 {
 	if (count_token(line) != PLANE_TOKEN)
 	{
-		// impl
+		free_line_map(line, tracer);
+		ft_err("Plane: arguments!", 3);
+	}
+	else if (!parse_cords(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Plane: coordinates!", 3);
+	}
+	else if (!parse_color(line[3]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Plane: color!", 3);
 	}
 }
 
@@ -32,6 +54,17 @@ void	parse_cylinder(char **line, t_tracer_ptr tracer UNUSED)
 {
 	if (count_token(line) != CYLINDER_TOKEN)
 	{
-		// impl
+		free_line_map(line, tracer);
+		ft_err("Cylinder: arguments!", 3);
+	}
+	else if (!parse_cords(line[1]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Cylinder: coordinates!", 3);
+	}
+	else if (!parse_color(line[5]))
+	{
+		free_line_map(line, tracer);
+		ft_err("Cylinder: color!", 3);
 	}
 }
