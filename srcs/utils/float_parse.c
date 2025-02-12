@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_cords.c                                      :+:      :+:    :+:   */
+/*   float_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 10:31:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/12 14:57:40 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/12 14:49:58 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/12 14:50:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-static bool	is_valid_cords(char *line)
+bool	float_parse(char *line)
 {
-	if (*line == '+' || *line == '-')
-		line++;
-	return (float_parse(line) && !(ft_strlen(line) > 20));
-}
-
-bool	parse_cords(char *line)
-{
-	char	**splited_line;
 	int		i;
+	int		dot_count;
+	bool	has_digit;
 
+	has_digit = false;
+	dot_count = 0;
 	i = 0;
-	splited_line = ft_split(line, ',');
-	if (count_token(splited_line) != CORDS_TOKEN)
-		return (false);
-	while (i < CORDS_TOKEN)
-		if (!is_valid_cords(splited_line[i++]))
+	while (line[i])
+	{
+		if (!(ft_isdigit(line[i]) || line[i] == '.'))
 			return (false);
-	return (true);
+		else if (ft_isdigit(line[i]))
+			has_digit = true;
+		else if (line[i] == '.' && ++dot_count > 1)
+			return (false);
+		i++;
+	}
+	return (has_digit);
 }
