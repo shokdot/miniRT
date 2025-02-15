@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:08:22 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/12 16:28:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:41:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static bool	is_valid_vector(char *line)
 static bool	out_of_range(double value)
 {
 	if (value < -1 || value > 1)
-		return (false);
-	return (true);
+		return (true);
+	return (false);
 }
 
 bool	parse_norm_vec(char *line)
@@ -39,7 +39,7 @@ bool	parse_norm_vec(char *line)
 	if (count_token(splited_line) != CORDS_TOKEN)
 		return (free_matrix(splited_line), false);
 	while (i < CORDS_TOKEN)
-		if (!is_valid_cords(splited_line[i++]))
+		if (!is_valid_vector(splited_line[i++]))
 			return (free_matrix(splited_line), false);
 	x = ft_atof(splited_line[0]);
 	y = ft_atof(splited_line[1]);
