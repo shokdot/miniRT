@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/12 16:11:49 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:22:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,17 @@ bool					parse_cords(char *line);
 bool					parse_norm_vec(char *line);
 
 // parse figures
-void					parse_sphere(char **line, t_tracer_ptr tracer UNUSED);
-void					parse_plane(char **line, t_tracer_ptr tracer UNUSED);
-void					parse_cylinder(char **line, t_tracer_ptr tracer UNUSED);
+void					parse_sphere(char **line, t_tracer_ptr tracer);
+void					parse_plane(char **line, t_tracer_ptr tracer);
+void					parse_cylinder(char **line, t_tracer_ptr tracer);
+
+// validation
+void					validation_ambient(char **line, t_tracer_ptr tracer);
+void					validation_light(char **line, t_tracer_ptr tracer);
+void					validation_camera(char **line, t_tracer_ptr tracer);
+void					validation_sphere(char **line, t_tracer_ptr tracer);
+void					validation_plane(char **line, t_tracer_ptr tracer);
+void					validation_cylinder(char **line, t_tracer_ptr tracer);
 
 void					init_mlx(void);
 
