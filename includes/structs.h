@@ -6,77 +6,82 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 15:38:31 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:53:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_tracer	t_tracer;
-typedef t_tracer		*t_tracer_ptr;
+typedef struct s_tracer		t_tracer;
+typedef t_tracer			*t_tracer_ptr;
 
-typedef struct s_vec3	t_vec3;
+typedef struct s_ambient	t_ambient;
+typedef t_ambient			*t_ambient_ptr;
 
-struct					s_tracer
+typedef struct s_vec3		t_vec3;
+typedef t_vec3				*t_vec3_ptr;
+
+struct						s_tracer
 {
-	int					fd;
+	int						fd;
+	t_list_ptr				figures;
 };
 
-struct					s_vec3
+struct						s_vec3
 {
-	double				x;
-	double				y;
-	double				z;
+	double					x;
+	double					y;
+	double					z;
 };
 
-struct					s_ambient
+struct						s_ambient
 {
-	char				*type;
-	double				ratio;
-	t_vec3				*color;
+	char					*type;
+	double					ratio;
+	t_vec3_ptr				color;
 };
 
-struct					s_camera
+struct						s_camera
 {
-	char				*type;
-	t_vec3				*cords;
-	t_vec3				*norm;
-	int					fov;
+	char					*type;
+	t_vec3_ptr				cords;
+	t_vec3_ptr				norm;
+	int						fov;
 };
 
-struct					s_light
+struct						s_light
 {
-	char				*type;
-	t_vec3				*cords;
-	double				ratio;
-	t_vec3				*color;
+	char					*type;
+	t_vec3_ptr				cords;
+	double					ratio;
+	t_vec3_ptr				color;
 };
 
-struct					s_sphere
+struct						s_sphere
 {
-	char				*type;
-	t_vec3				*cords;
-	double				diameter;
-	t_vec3				*color;
+	char					*type;
+	t_vec3_ptr				cords;
+	double					diameter;
+	t_vec3_ptr				color;
 };
 
-struct					s_plane
+struct						s_plane
 {
-	char				*type;
-	t_vec3				*cords;
-	t_vec3				*norm;
-	t_vec3				*color;
+	char					*type;
+	t_vec3_ptr				cords;
+	t_vec3_ptr				norm;
+	t_vec3_ptr				color;
 };
 
-struct					s_cylinder
+struct						s_cylinder
 {
-	char				*type;
-	t_vec3				*cords;
-	t_vec3				*norm;
-	double				diameter;
-	double				height;
-	t_vec3				*color;
+	char					*type;
+	t_vec3_ptr				cords;
+	t_vec3_ptr				norm;
+	double					diameter;
+	double					height;
+	t_vec3_ptr				color;
 };
 
 #endif
