@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 16:53:02 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:58:17 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,26 @@
 typedef struct s_tracer		t_tracer;
 typedef t_tracer			*t_tracer_ptr;
 
+typedef struct s_vec3		t_vec3;
+typedef t_vec3				*t_vec3_ptr;
+
 typedef struct s_ambient	t_ambient;
 typedef t_ambient			*t_ambient_ptr;
 
-typedef struct s_vec3		t_vec3;
-typedef t_vec3				*t_vec3_ptr;
+typedef struct s_camera		t_camera;
+typedef t_camera			*t_camera_ptr;
+
+typedef struct s_light		t_light;
+typedef t_light				*t_light_ptr;
+
+typedef struct s_sphere		t_sphere;
+typedef t_sphere			*t_sphere_ptr;
+
+typedef struct s_plane		t_plane;
+typedef t_plane				*t_plane_ptr;
+
+typedef struct s_cylinder	t_cylinder;
+typedef t_cylinder			*t_cylinder_ptr;
 
 struct						s_tracer
 {
