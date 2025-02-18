@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_objects.c                                  :+:      :+:    :+:   */
+/*   fill_plane_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:47:32 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/18 21:04:04 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/18 21:04:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parse_ambient(char **line, t_tracer_ptr tracer)
+void	fill_plane_struct(char **line, t_tracer_ptr tracer)
 {
-	validation_ambient(line, tracer);
-	fill_ambient_struct(line, tracer);
-}
+	t_plane_ptr	obj;
 
-void	parse_light(char **line, t_tracer_ptr tracer)
-{
-	validation_light(line, tracer);
-	fill_light_struct(line, tracer);
-}
-
-void	parse_camera(char **line, t_tracer_ptr tracer)
-{
-	validation_camera(line, tracer);
-	fill_camera_struct(line, tracer);
+	obj = (t_plane_ptr)ft_malloc(sizeof(t_plane));
+	obj->type = ft_strdup(line[0]);
+	obj->cords = init_vec3(line[1]);
+	obj->norm = init_vec3(line[2]);
+	obj->color = init_vec3(line[3]);
+	push_back_mv_lt(tracer->figures, obj);
 }

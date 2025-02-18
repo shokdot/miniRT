@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/17 14:04:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:46:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # define UNUSED __attribute__((unused))
 
 void			args_check(int argc, char **argv);
-t_tracer_ptr	init_data(void);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
@@ -72,6 +71,17 @@ void			validation_sphere(char **line, t_tracer_ptr tracer);
 void			validation_plane(char **line, t_tracer_ptr tracer);
 void			validation_cylinder(char **line, t_tracer_ptr tracer);
 
+// init
 void			init_mlx(void);
+t_vec3_ptr		init_vec3(char *line);
+t_tracer_ptr	init_data(void);
+
+// fill_data
+void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
+void			fill_camera_struct(char **line, t_tracer_ptr tracer);
+void			fill_cylinder_struct(char **line, t_tracer_ptr tracer);
+void			fill_light_struct(char **line, t_tracer_ptr tracer);
+void			fill_plane_struct(char **line, t_tracer_ptr tracer);
+void			fill_sphere_struct(char **line, t_tracer_ptr tracermkae);
 
 #endif

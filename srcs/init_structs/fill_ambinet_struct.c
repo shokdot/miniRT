@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_objects.c                                  :+:      :+:    :+:   */
+/*   fill_ambinet_struct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:47:32 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/18 17:21:08 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/18 22:33:30 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parse_ambient(char **line, t_tracer_ptr tracer)
+void	fill_ambient_struct(char **line, t_tracer_ptr tracer)
 {
-	validation_ambient(line, tracer);
-	fill_ambient_struct(line, tracer);
-}
+	t_ambient_ptr	obj;
 
-void	parse_light(char **line, t_tracer_ptr tracer)
-{
-	validation_light(line, tracer);
-	fill_light_struct(line, tracer);
-}
-
-void	parse_camera(char **line, t_tracer_ptr tracer)
-{
-	validation_camera(line, tracer);
-	fill_camera_struct(line, tracer);
+	obj = (t_ambient_ptr)ft_malloc(sizeof(t_ambient));
+	obj->type = ft_strdup(line[0]);
+	obj->ratio = ft_atof(line[1]);
+	obj->color = init_vec3(line[2]);
+	push_back_mv_lt(tracer->figures, obj);
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_objects.c                                  :+:      :+:    :+:   */
+/*   init_vec3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 01:17:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:47:32 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/18 22:34:21 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/18 22:34:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	parse_ambient(char **line, t_tracer_ptr tracer)
+t_vec3_ptr	init_vec3(char *line)
 {
-	validation_ambient(line, tracer);
-	fill_ambient_struct(line, tracer);
-}
+	char		**splited;
+	t_vec3_ptr	vec;
 
-void	parse_light(char **line, t_tracer_ptr tracer)
-{
-	validation_light(line, tracer);
-	fill_light_struct(line, tracer);
-}
-
-void	parse_camera(char **line, t_tracer_ptr tracer)
-{
-	validation_camera(line, tracer);
-	fill_camera_struct(line, tracer);
+	splited = ft_split(line, ',');
+	vec = (t_vec3_ptr)ft_malloc(sizeof(t_vec3));
+	vec->x = ft_atof(splited[0]);
+	vec->y = ft_atof(splited[1]);
+	vec->z = ft_atof(splited[2]);
+	return (vec);
 }
