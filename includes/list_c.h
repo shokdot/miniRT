@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:37:26 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/22 20:04:07 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:42:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ typedef struct s_node	t_node;
 typedef struct s_list	t_list;
 typedef t_node			*t_node_ptr;
 typedef t_list			*t_list_ptr;
+
+typedef enum e_obj_type	t_obj_type;
+
+enum					e_obj_type
+{
+	ambinet,
+	camera,
+	light,
+	sphere,
+	plane,
+	cylinder
+};
 
 struct					s_node
 {
