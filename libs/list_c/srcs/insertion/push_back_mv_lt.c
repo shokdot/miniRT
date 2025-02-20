@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:30:27 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 18:49:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:03:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	push_back_mv_lt(t_list_ptr list, void *data, t_obj_type obj_type)
 	else
 	{
 		curr = make_node_mv(data, obj_type);
-		list->head->prev = curr;
-		curr->next = list->head;
-		list->head = curr;
+		curr->prev = list->tail;
+		list->tail->next = curr;
+		list->tail = curr;
 	}
 	++(list->size);
 }
