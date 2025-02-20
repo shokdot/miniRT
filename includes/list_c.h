@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:37:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 18:44:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:50:41 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,14 @@ void					ft_free(void **ptr);
 t_node_ptr				make_node_mv(void *data, t_obj_type obj_type);
 t_node_ptr				make_node(void *data, size_t size, t_obj_type obj_type);
 // insertion
-void					push_back_mv_lt(t_list_ptr list, void *data);
-void					push_back_lt(t_list_ptr list, void *data, size_t size);
-void					push_front_lt(t_list_ptr list, void *data, size_t size);
-void					push_front_mv_lst(t_list_ptr list, void *data);
+void					push_back_mv_lt(t_list_ptr list, void *data,
+							t_obj_type obj_type);
+void					push_back_lt(t_list_ptr list, void *data, size_t size,
+							t_obj_type obj_type);
+void					push_front_lt(t_list_ptr list, void *data, size_t size,
+							t_obj_type obj_type);
+void					push_front_mv_lst(t_list_ptr list, void *data,
+							t_obj_type obj_type);
 // deletion
 void					pop_back_lt(t_list_ptr list);
 void					pop_front_lt(t_list_ptr list);
