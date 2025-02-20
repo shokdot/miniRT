@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:37:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 18:42:24 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:44:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ enum					e_obj_type
 
 struct					s_node
 {
+	t_obj_type			obj_type;
 	void				*data;
 	struct s_node		*prev;
 	struct s_node		*next;
@@ -62,8 +63,8 @@ void					*ft_malloc(size_t size);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 void					ft_free(void **ptr);
 // make_node
-t_node_ptr				make_node_mv(void *data);
-t_node_ptr				make_node(void *data, size_t size);
+t_node_ptr				make_node_mv(void *data, t_obj_type obj_type);
+t_node_ptr				make_node(void *data, size_t size, t_obj_type obj_type);
 // insertion
 void					push_back_mv_lt(t_list_ptr list, void *data);
 void					push_back_lt(t_list_ptr list, void *data, size_t size);
