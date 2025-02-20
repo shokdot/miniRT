@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 21:04:02 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 21:04:03 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:09:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	fill_sphere_struct(char **line, t_tracer_ptr tracer)
 	obj->cords = init_vec3(line[1]);
 	obj->diameter = ft_atof(line[2]);
 	obj->color = init_vec3(line[3]);
-	push_back_mv_lt(tracer->figures, obj);
+	push_back_mv_lt(tracer->figures, obj, sphere);
 }
