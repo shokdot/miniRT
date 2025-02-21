@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:55:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 21:02:53 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:05:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	dup_err(t_tracer_ptr tracer)
 {
-	clear_lt(&(tracer->figures));
-	ft_free((void **)&tracer);
+	free_obj_tracer(tracer);
 	ft_err("Map: contains duplicates!", 4);
 }
 
