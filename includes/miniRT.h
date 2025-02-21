@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 13:04:55 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:46:35 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void			validation_cylinder(char **line, t_tracer_ptr tracer);
 void			check_dublicates(t_tracer_ptr tracer);
 
 // init
-void			init_mlx(void);
+t_mlx_ptr		init_mlx(void);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 

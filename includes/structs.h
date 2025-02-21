@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 12:31:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:32:37 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 typedef struct s_tracer		t_tracer;
 typedef t_tracer			*t_tracer_ptr;
+
+typedef struct s_mlx		t_mlx;
+typedef t_mlx				*t_mlx_ptr;
 
 typedef struct s_vec3		t_vec3;
 typedef t_vec3				*t_vec3_ptr;
@@ -41,6 +44,13 @@ struct						s_tracer
 {
 	int						fd;
 	t_list_ptr				figures;
+	t_mlx					*mlx;
+};
+
+struct						s_mlx
+{
+	void					*mlx;
+	void					*mlx_win;
 };
 
 struct						s_vec3
