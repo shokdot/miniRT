@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 00:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/19 11:22:53 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:10:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	free_line_map(char **line, t_tracer_ptr tracer)
 	free_matrix(line);
 	line = NULL;
 	close(tracer->fd);
+	ft_free((void **)&tracer->mlx);
 	clear_lt(&(tracer->figures));
 	ft_free((void **)&tracer);
 }
