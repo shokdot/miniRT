@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:49:39 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 19:08:56 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:14:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	fill_camera_struct(char **line, t_tracer_ptr tracer)
 	t_camera_ptr	obj;
 
 	obj = (t_camera_ptr)ft_malloc(sizeof(t_camera));
-	obj->type = ft_strdup(line[0]);
 	obj->cords = init_vec3(line[1]);
 	obj->norm = init_vec3(line[2]);
 	obj->fov = ft_atoi(line[3]);

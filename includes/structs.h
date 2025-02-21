@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 16:58:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:31:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@ struct						s_vec3
 
 struct						s_ambient
 {
-	char					*type;
 	double					ratio;
 	t_vec3_ptr				color;
 };
 
 struct						s_camera
 {
-	char					*type;
 	t_vec3_ptr				cords;
 	t_vec3_ptr				norm;
 	int						fov;
@@ -67,15 +65,12 @@ struct						s_camera
 
 struct						s_light
 {
-	char					*type;
 	t_vec3_ptr				cords;
 	double					ratio;
-	t_vec3_ptr				color;
 };
 
 struct						s_sphere
 {
-	char					*type;
 	t_vec3_ptr				cords;
 	double					diameter;
 	t_vec3_ptr				color;
@@ -83,7 +78,6 @@ struct						s_sphere
 
 struct						s_plane
 {
-	char					*type;
 	t_vec3_ptr				cords;
 	t_vec3_ptr				norm;
 	t_vec3_ptr				color;
@@ -91,7 +85,6 @@ struct						s_plane
 
 struct						s_cylinder
 {
-	char					*type;
 	t_vec3_ptr				cords;
 	t_vec3_ptr				norm;
 	double					diameter;
