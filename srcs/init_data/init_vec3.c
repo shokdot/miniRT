@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:34:21 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:34:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:16:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_vec3_ptr	init_vec3(char *line)
 	vec->x = ft_atof(splited[0]);
 	vec->y = ft_atof(splited[1]);
 	vec->z = ft_atof(splited[2]);
+	free_matrix(splited);
 	return (vec);
 }
