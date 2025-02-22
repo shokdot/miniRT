@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   figures.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 15:32:37 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/22 22:46:00 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/22 22:54:14 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef FIGURES_H
+# define FIGURES_H
 
-typedef struct s_tracer		t_tracer;
-typedef t_tracer			*t_tracer_ptr;
-
-typedef struct s_mlx		t_mlx;
-typedef t_mlx				*t_mlx_ptr;
-
-typedef struct s_vec3		t_vec3;
-typedef t_vec3				*t_vec3_ptr;
-
-typedef struct s_ambient	t_ambient;
-typedef t_ambient			*t_ambient_ptr;
-
-typedef struct s_camera		t_camera;
-typedef t_camera			*t_camera_ptr;
-
-typedef struct s_light		t_light;
-typedef t_light				*t_light_ptr;
+# include <vec3.h>
 
 typedef struct s_sphere		t_sphere;
 typedef t_sphere			*t_sphere_ptr;
@@ -39,45 +23,6 @@ typedef t_plane				*t_plane_ptr;
 
 typedef struct s_cylinder	t_cylinder;
 typedef t_cylinder			*t_cylinder_ptr;
-
-struct						s_tracer
-{
-	int						fd;
-	t_list_ptr				figures;
-	t_mlx					*mlx;
-};
-
-struct						s_mlx
-{
-	void					*mlx;
-	void					*mlx_win;
-};
-
-struct						s_vec3
-{
-	double					x;
-	double					y;
-	double					z;
-};
-
-struct						s_ambient
-{
-	double					ratio;
-	t_vec3_ptr				color;
-};
-
-struct						s_camera
-{
-	t_vec3_ptr				cords;
-	t_vec3_ptr				norm;
-	int						fov;
-};
-
-struct						s_light
-{
-	t_vec3_ptr				cords;
-	double					ratio;
-};
 
 struct						s_sphere
 {

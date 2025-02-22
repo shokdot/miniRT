@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 19:01:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:57:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <structs.h>
+# include <tracer.h>
 # include <unistd.h>
 
 # define AMBIENT_TOKEN 3
