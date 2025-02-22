@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 15:46:35 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:47:31 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <libft.h>
 # include <list_c.h>
+# include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>

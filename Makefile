@@ -40,7 +40,7 @@ LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)liblist_c.a
 MLX = $(MLXPATH)libmlx.a
 
-LIBFLAGS = -L$(LISTPATH) -l list_c -L$(LIBFTPATH) -l ft -L$(MLXPATH) -l mlx $(XFLAGS)
+LIBFLAGS = -L$(LISTPATH) -l list_c -L$(LIBFTPATH) -l ft -lm -L$(MLXPATH) -l mlx $(XFLAGS)
 
 all : $(NAME)
 
