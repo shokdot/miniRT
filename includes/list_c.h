@@ -6,13 +6,14 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:37:26 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 18:50:41 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:59:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_C_H
 # define LIST_C_H
 
+# include <defines.h>
 # include <libft.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -24,18 +25,6 @@ typedef struct s_node	t_node;
 typedef struct s_list	t_list;
 typedef t_node			*t_node_ptr;
 typedef t_list			*t_list_ptr;
-
-typedef enum e_obj_type	t_obj_type;
-
-enum					e_obj_type
-{
-	ambinet,
-	camera,
-	light,
-	sphere,
-	plane,
-	cylinder
-};
 
 struct					s_node
 {

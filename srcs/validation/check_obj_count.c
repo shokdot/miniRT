@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:55:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 19:01:13 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:00:54 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	check_obj_count(t_tracer_ptr tracer)
 	tmp = tracer->figures->head;
 	while (tmp)
 	{
-		if (tmp->obj_type == ambinet)
+		if (tmp->obj_type == AMBIENT)
 			++amb_count;
-		else if (tmp->obj_type == camera)
+		else if (tmp->obj_type == CAMERA)
 			++cam_count;
-		else if (tmp->obj_type == light)
+		else if (tmp->obj_type == LIGHT)
 			++light_count;
 		tmp = tmp->next;
 	}

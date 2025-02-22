@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_light_struct.c                                :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 21:04:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 23:01:19 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/22 23:00:35 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#ifndef DEFINES_H
+# define DEFINES_H
 
-void	fill_light_struct(char **line, t_tracer_ptr tracer)
+# define AMBIENT_TOKEN 3
+# define CAMERA_TOKEN 4
+# define LIGHT_TOKEN 3
+# define SPHERE_TOKEN 4
+# define PLANE_TOKEN 4
+# define CYLINDER_TOKEN 6
+# define COLOR_TOKEN 3
+# define CORDS_TOKEN 3
+
+typedef enum e_obj_type	t_obj_type;
+
+enum					e_obj_type
 {
-	t_light_ptr	obj;
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	SPHERE,
+	PLANE,
+	CYLINDER
+};
 
-	obj = (t_light_ptr)ft_malloc(sizeof(t_light));
-	obj->cords = init_vec3(line[1]);
-	obj->ratio = ft_atof(line[2]);
-	push_back_mv_lt(tracer->figures, obj, LIGHT);
-}
+#endif
