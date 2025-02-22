@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_dublicates.c                                 :+:      :+:    :+:   */
+/*   check_obj_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:55:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 13:05:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:01:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-static void	dup_err(t_tracer_ptr tracer)
+static void	dup_err(t_tracer_ptr tracer, int typ)
 {
 	free_obj_tracer(tracer);
-	ft_err("Map: contains duplicates!", 4);
+	if (typ == 1)
+		ft_err("Map: contains duplicates!", 4);
+	ft_err("Map: there is'nt Light, Ambient or Camera!", 4);
 }
 
-void	check_dublicates(t_tracer_ptr tracer)
+void	check_obj_count(t_tracer_ptr tracer)
 {
 	t_node_ptr	tmp;
 	int			amb_count;
@@ -31,12 +33,16 @@ void	check_dublicates(t_tracer_ptr tracer)
 	tmp = tracer->figures->head;
 	while (tmp)
 	{
-		if (tmp->obj_type == ambinet && ++amb_count > 1)
-			dup_err(tracer);
-		else if (tmp->obj_type == camera && ++cam_count > 1)
-			dup_err(tracer);
-		else if (tmp->obj_type == light && ++light_count > 1)
-			dup_err(tracer);
+		if (tmp->obj_type == ambinet)
+			++amb_count;
+		else if (tmp->obj_type == camera)
+			++cam_count;
+		else if (tmp->obj_type == light)
+			++light_count;
 		tmp = tmp->next;
 	}
+	if (amb_count < 1 || cam_count < 1 || light_count < 1)
+		dup_err(tracer, 0);
+	else if (amb_count > 1 || cam_count > 1 || light_count > 1)
+		dup_err(tracer, 1);
 }

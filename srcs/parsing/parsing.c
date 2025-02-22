@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/20 20:34:52 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:01:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void	parsing(char *filename, t_tracer_ptr tracer)
 	tracer->fd = ft_open(filename, O_RDONLY);
 	parse_line(tracer);
 	close(tracer->fd);
-	check_dublicates(tracer);
+	check_obj_count(tracer);
 }
