@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 13:55:10 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:14:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	main(int argc, char **argv)
 	tracer = init_data();
 	parsing(argv[1], tracer);
 	printf("MAP is OK\n");
-	free_obj_tracer(tracer);
+	// free_obj_tracer(tracer);
 }
