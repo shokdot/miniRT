@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 22:59:55 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:59:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void			fill_plane_struct(char **line, t_tracer_ptr tracer);
 void			fill_sphere_struct(char **line, t_tracer_ptr tracermkae);
 
 // free_objects
-void			free_objs(t_list_ptr objs);
+void			free_figures(t_list_ptr figures);
+void			free_objs(t_scene_ptr scene);
 void			free_ambient(t_ambient_ptr obj);
 void			free_camera(t_camera_ptr obj);
 void			free_cylinder(t_cylinder_ptr obj);

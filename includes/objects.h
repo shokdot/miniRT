@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:47:15 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 22:53:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:06:19 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,32 @@
 
 # include <vec3.h>
 
-struct			s_ambient
+typedef struct s_ambient	t_ambient;
+typedef t_ambient			*t_ambient_ptr;
+
+typedef struct s_camera		t_camera;
+typedef t_camera			*t_camera_ptr;
+
+typedef struct s_light		t_light;
+typedef t_light				*t_light_ptr;
+
+struct						s_ambient
 {
-	double		ratio;
-	t_vec3_ptr	color;
+	double					ratio;
+	t_vec3_ptr				color;
 };
 
-struct			s_camera
+struct						s_camera
 {
-	t_vec3_ptr	cords;
-	t_vec3_ptr	norm;
-	int			fov;
+	t_vec3_ptr				cords;
+	t_vec3_ptr				norm;
+	int						fov;
 };
 
-struct			s_light
+struct						s_light
 {
-	t_vec3_ptr	cords;
-	double		ratio;
+	t_vec3_ptr				cords;
+	double					ratio;
 };
 
 #endif

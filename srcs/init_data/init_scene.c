@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_line_map.c                                    :+:      :+:    :+:   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 00:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 23:16:21 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/22 23:08:40 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/23 11:02:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	free_line_map(char **line, t_tracer_ptr tracer)
+t_scene_ptr	init_scene(void)
 {
-	free_matrix(line);
-	line = NULL;
-	close(tracer->fd);
-	ft_free((void **)&tracer->mlx);
-	clear_lt(&(tracer->scene->figures));
-	ft_free((void **)&tracer);
+	t_scene_ptr	scene;
+
+	scene = (t_scene_ptr)ft_malloc(sizeof(t_scene));
+	scene->ambient = NULL;
+	scene->camera = NULL;
+	scene->light = NULL;
+	scene->figures = init_lt();
+	scene->amb_count = 0;
+	scene->cam_count = 0;
+	scene->lgt_count = 0;
+	return (scene);
 }

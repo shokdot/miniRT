@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_line_map.c                                    :+:      :+:    :+:   */
+/*   free_figures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 00:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 23:16:21 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/23 11:23:18 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/23 11:23:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	free_line_map(char **line, t_tracer_ptr tracer)
+void	free_figures(t_list_ptr figures)
 {
-	free_matrix(line);
-	line = NULL;
-	close(tracer->fd);
-	ft_free((void **)&tracer->mlx);
-	clear_lt(&(tracer->scene->figures));
-	ft_free((void **)&tracer);
+	t_node_ptr	tmp;
+
+	tmp = figures->head;
+	while (tmp)
+	{
+		if (tmp->obj_type == CYLINDER)
+			free_cylinder((t_cylinder_ptr)tmp->data);
+		else if (tmp->obj_type == PLANE)
+			free_plane((t_plane_ptr)tmp->data);
+		else if (tmp->obj_type == SPHERE)
+			free_sphere((t_sphere_ptr)tmp->data);
+		tmp = tmp->next;
+	}
 }
