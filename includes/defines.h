@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 16:09:06 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:36:31 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
+# define RATIO 1.77
 
 # define AMBIENT_TOKEN 3
 # define CAMERA_TOKEN 4
