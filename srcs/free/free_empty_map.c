@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 16:21:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 14:11:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:56:32 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_empty_map(t_tracer_ptr tracer)
 {
 	close(tracer->fd);
 	free_scene(tracer->scene);
-	free_mlx(tracer->mlx);
 	ft_free((void **)&tracer);
 	ft_err("Map: Empty!", 1);
 }
