@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 14:14:08 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:25:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	foo(void)
 {
-	system("leaks miniRT");
+	system("leaks -q miniRT");
 }
 
 int	main(int argc, char **argv)

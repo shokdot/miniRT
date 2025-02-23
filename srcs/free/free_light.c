@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:29:14 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 13:46:51 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:56:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	free_light(t_light_ptr obj)
 	if (!obj)
 		return ;
 	free(obj->cords);
+	free(obj);
 }
