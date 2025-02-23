@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 14:12:13 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 17:14:37 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ void			validation_cylinder(char **line, t_tracer_ptr tracer);
 void			check_obj_count(t_tracer_ptr tracer);
 
 // init
-t_mlx_ptr		init_mlx(void);
+void			init_mlx(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
+t_scene_ptr		init_scene(void);
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
@@ -80,8 +81,9 @@ void			free_matrix(char **matrix);
 void			free_empty_map(t_tracer_ptr tracer);
 void			free_line_map(char **line, t_tracer_ptr tracer);
 void			free_obj_tracer(t_tracer_ptr tracer);
-void			free_scene(t_scene_ptr scene);
 void			free_mlx(t_mlx_ptr mlx);
+void			free_scene(t_scene_ptr scene);
+
 // free_objects
 void			free_figures(t_list_ptr figures);
 void			free_objs(t_scene_ptr scene);

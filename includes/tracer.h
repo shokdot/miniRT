@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 11:01:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 17:14:17 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ struct					s_tracer
 {
 	int					fd;
 	t_scene_ptr			scene;
-	t_mlx				*mlx;
+	t_mlx_ptr			mlx;
 };
 
 struct					s_mlx
@@ -49,7 +49,5 @@ struct					s_scene
 	int					cam_count;
 	int					lgt_count;
 };
-
-t_scene_ptr				init_scene(void);
 
 #endif

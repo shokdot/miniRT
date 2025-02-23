@@ -6,18 +6,16 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 20:04:45 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 16:09:14 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 17:01:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_mlx_ptr	init_mlx(void)
+void	init_mlx(t_tracer_ptr tracer)
 {
-	t_mlx_ptr	mlx;
-
-	mlx = (t_mlx_ptr)ft_malloc(sizeof(t_mlx));
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "miniRT");
-	return (mlx);
+	tracer->mlx = (t_mlx_ptr)ft_malloc(sizeof(t_mlx_ptr));
+	tracer->mlx->mlx = mlx_init();
+	tracer->mlx->mlx_win = mlx_new_window(tracer->mlx->mlx, WIDTH, HEIGHT,
+			"miniRT");
 }
