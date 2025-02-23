@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 12:59:21 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:25:20 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,14 @@ void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
-void			free_matrix(char **matrix);
+
 void			print_matrix(char **line);
-void			empty_map_free(t_tracer_ptr tracer);
 void			tab_to_space(char *line);
 int				count_token(char **line);
-void			free_line_map(char **line, t_tracer_ptr tracer);
 bool			is_line_empty(char *line);
 bool			is_matrix_empty(char **matrix);
 bool			skip_check(char **line);
 bool			float_parse(char *line);
-void			free_obj_tracer(t_tracer_ptr tracer);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);
@@ -78,12 +75,19 @@ void			fill_light_struct(char **line, t_tracer_ptr tracer);
 void			fill_plane_struct(char **line, t_tracer_ptr tracer);
 void			fill_sphere_struct(char **line, t_tracer_ptr tracermkae);
 
+// free
+void			free_matrix(char **matrix);
+void			free_empty_map(t_tracer_ptr tracer);
+void			free_line_map(char **line, t_tracer_ptr tracer);
+void			free_obj_tracer(t_tracer_ptr tracer);
 // free_objects
 void			free_figures(t_list_ptr figures);
 void			free_objs(t_scene_ptr scene);
 void			free_ambient(t_ambient_ptr obj);
 void			free_camera(t_camera_ptr obj);
 void			free_cylinder(t_cylinder_ptr obj);
+
+// lol
 void			free_light(t_light_ptr obj);
 void			free_plane(t_plane_ptr obj);
 void			free_sphere(t_sphere_ptr obj);

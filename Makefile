@@ -32,7 +32,7 @@ else
 endif
 
 CFLAGS = -Wall -Wextra -Werror
-DEBUG = -fsanitize=address -g3
+DEBUG =# -fsanitize=address -g3
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
 CMP_HEADERS = $(patsubst %,-I%, $(INCLPATH))
 

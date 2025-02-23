@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 11:23:18 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 11:23:36 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:46:41 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_figures(t_list_ptr figures)
 {
 	t_node_ptr	tmp;
 
+	if (!figures)
+		return ;
 	tmp = figures->head;
 	while (tmp)
 	{

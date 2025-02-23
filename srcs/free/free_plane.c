@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:32:42 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 12:52:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:47:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	free_plane(t_plane_ptr obj)
 {
+	if (!obj)
+		return ;
 	free(obj->cords);
 	free(obj->norm);
 	free(obj->color);

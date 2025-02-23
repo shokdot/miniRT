@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:25:47 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/21 12:52:18 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:46:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	free_camera(t_camera_ptr obj)
 {
+	if (!obj)
+		return ;
 	free(obj->cords);
 	free(obj->norm);
 }

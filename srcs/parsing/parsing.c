@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/22 19:01:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:50:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	parse_line(t_tracer_ptr tracer)
 		if (is_line_empty(line))
 		{
 			if (is_empty)
-				empty_map_free(tracer);
+				free_empty_map(tracer);
 			return ;
 		}
 		tab_to_space(line);
