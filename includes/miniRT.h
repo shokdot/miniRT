@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/25 16:37:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:31:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ bool			is_line_empty(char *line);
 bool			is_matrix_empty(char **matrix);
 bool			skip_check(char **line);
 bool			float_parse(char *line);
+double			deg_to_rad(double degrees);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);
