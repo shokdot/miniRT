@@ -8,7 +8,7 @@ NAME = miniRT
 
 SRC_DIR = srcs/
 OBJ_DIR = build
-SUBDIRS = init_data parsing utils validation init_structs free vector
+SUBDIRS = init_data parsing utils validation init_structs free vector ray_tracing
 
 LIBFTPATH = libs/libft/
 LISTPATH = libs/list_c/
@@ -32,7 +32,7 @@ else
 endif
 
 CFLAGS = -Wall -Wextra -Werror
-DEBUG =# -fsanitize=address -g3
+DEBUG = -fsanitize=address -g3
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
 CMP_HEADERS = $(patsubst %,-I%, $(INCLPATH))
 
