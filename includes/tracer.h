@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 13:42:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 17:14:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:17:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ typedef t_mlx			*t_mlx_ptr;
 typedef struct s_scene	t_scene;
 typedef t_scene			*t_scene_ptr;
 
+typedef struct s_img	t_img;
+typedef t_img			*t_img_ptr;
+
 struct					s_tracer
 {
 	int					fd;
 	t_scene_ptr			scene;
 	t_mlx_ptr			mlx;
+	t_img_ptr			img;
 };
 
 struct					s_mlx
@@ -48,6 +52,15 @@ struct					s_scene
 	int					amb_count;
 	int					cam_count;
 	int					lgt_count;
+};
+
+struct					s_img
+{
+	void				*img;
+	char				*img_data;
+	int					bpp;
+	int					size_line;
+	int					endian;
 };
 
 #endif

@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/25 16:36:07 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/25 16:28:09 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/25 16:34:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	foo(void)
+void	init_img(t_tracer_ptr tracer)
 {
-	system("leaks -q miniRT");
-}
-
-int	main(int argc, char **argv)
-{
-	t_tracer_ptr	tracer;
-
-	atexit(foo);
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	init_mlx(tracer);
-	init_img(tracer);
-	printf("MAP is OK\n");
+	tracer->img = (t_img_ptr)ft_malloc(sizeof(t_img));
+	tracer->img->img = mlx_new_image(tracer->mlx->mlx, WIDTH, HEIGHT);
+	tracer->img->img_data = mlx_get_data_addr(tracer->img->img,
+			&tracer->img->bpp, &tracer->img->size_line, &tracer->img->endian);
 }

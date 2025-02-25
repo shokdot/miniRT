@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/25 13:30:09 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:37:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			init_mlx(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
+void			init_img(t_tracer_ptr tracer);
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
