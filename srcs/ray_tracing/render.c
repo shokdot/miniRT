@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/25 16:00:46 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:22:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,5 @@
 
 void	render(t_tracer_ptr tracer)
 {
+	init_vplane(tracer);
 }
