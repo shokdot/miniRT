@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 19:30:06 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/26 19:47:11 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/26 21:19:43 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ struct						s_ray
 {
 	t_vec3_ptr				origin;
 	t_vec3_ptr				direction;
-	double					tMax;
 };
 
 t_vec3						calculate(t_ray ray, float t);
