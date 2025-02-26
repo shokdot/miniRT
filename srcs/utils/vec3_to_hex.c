@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   vec3d_to_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 20:04:45 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 22:16:41 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/26 22:04:55 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/26 22:05:03 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	init_mlx(t_tracer_ptr tracer)
+int vec3_to_hex(t_vec3 color)
 {
-	tracer->mlx = (t_mlx_ptr)ft_malloc(sizeof(t_mlx));
-	tracer->mlx->mlx = mlx_init();
-	tracer->mlx->mlx_win = mlx_new_window(tracer->mlx->mlx, WIDTH, HEIGHT,
-			"miniRT");
-	if (NULL == tracer->mlx->mlx_win || NULL == tracer->mlx->mlx)
-		printf("Bari or txeq jan");
+    int r = (int)color.x & 0xFF; // Clamp to 0-255
+    int g = (int)color.y & 0xFF;
+    int b = (int)color.z & 0xFF;
+    return (r << 16) | (g << 8) | b; // Combine into 0xRRGGBB
 }

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 19:59:57 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/26 22:20:28 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
-
+int				vec3_to_hex(t_vec3 color);
 void			print_matrix(char **line);
 void			tab_to_space(char *line);
 int				count_token(char **line);
@@ -66,11 +66,13 @@ void			check_obj_count(t_tracer_ptr tracer);
 
 // init
 void			init_mlx(t_tracer_ptr tracer);
+void			init_img(t_tracer_ptr tracer);
+void			init_vplane(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
-void			init_img(t_tracer_ptr tracer);
 t_ray_ptr		init_ray(void);
+
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
@@ -101,6 +103,6 @@ void			free_plane(t_plane_ptr obj);
 void			free_sphere(t_sphere_ptr obj);
 
 // render
-void			render(t_tracer_ptr tracer);
+int			render(t_tracer_ptr tracer);
 
 #endif
