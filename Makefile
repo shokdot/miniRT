@@ -22,17 +22,17 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 PLATFORM = $(shell uname -s)
 
 ifeq ($(PLATFORM), Darwin)
-# INCLPATH += libs/mlx_mac/
+	INCLPATH += libs/mlx_mac/
 	MLXPATH = libs/mlx_mac/
 	XFLAGS = -framework OpenGL -framework AppKit
 else
-#INCLPATH += libs/mlx_mac/
-#MLXPATH = libs/mlx_mac/
-#XFLAGS = -framework OpenGL -framework AppKit
+	INCLPATH += libs/mlx_linux/
+	MLXPATH = libs/mlx_linux/
+	XFLAGS = -lXext -lX11 -lm -lz
 endif
 
 CFLAGS = -Wall -Wextra -Werror
-DEBUG = -fsanitize=address -g3
+DEBUG = #-fsanitize=address -g3
 HEADERS = $(foreach H, $(INCLPATH), $(wildcard $(H)*.h))
 CMP_HEADERS = $(patsubst %,-I%, $(INCLPATH))
 
@@ -47,7 +47,7 @@ all : $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT) $(MLX)  $(HEADERS)  Makefile
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIST) $(LIBFT) $(MLX) $(HEADERS)  Makefile
 	@$(CC) $(DEBUG) $(CFLAGS) $(CMP_HEADERS) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 

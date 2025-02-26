@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 15:48:40 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/26 19:30:06 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/26 19:47:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#ifndef RAY_H
+# define RAY_H
 
-int	main(int argc, char **argv)
+#include <vec3.h>
+
+typedef struct s_ray		t_ray;
+typedef t_ray				*t_ray_ptr;
+
+struct						s_ray
 {
-	t_tracer_ptr	tracer;
+	t_vec3_ptr				origin;
+	t_vec3_ptr				direction;
+	double					tMax;
+};
 
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	// init_mlx(tracer);
-	// init_img(tracer);
-	printf("MAP is OK\n");
-}
+t_vec3						calculate(t_ray ray, float t);
+
+#endif // RAY_H

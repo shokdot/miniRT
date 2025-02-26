@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vec3_cross.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 15:48:40 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/26 18:07:49 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/26 18:10:34 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
-	t_tracer_ptr	tracer;
+	t_vec3	res;
 
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	// init_mlx(tracer);
-	// init_img(tracer);
-	printf("MAP is OK\n");
+	res = (t_vec3){a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x};
+	return (res);
 }

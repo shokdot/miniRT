@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vec3_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 15:48:40 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/26 18:12:55 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/26 18:15:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+double	vec3_len(t_vec3 v)
 {
-	t_tracer_ptr	tracer;
-
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	// init_mlx(tracer);
-	// init_img(tracer);
-	printf("MAP is OK\n");
+	return sqrt(vec3_dot(v, v));
 }

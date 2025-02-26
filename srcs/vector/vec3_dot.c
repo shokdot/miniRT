@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 17:27:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 17:28:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:41:41 by tigravoidn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,9 @@
 double	vec3_dot(t_vec3 v1, t_vec3 v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
+}
+
+double	vec3_dot_num(t_vec3 v, double f)
+{
+	return (v.x * f + v.y * f + v.z * f);
 }

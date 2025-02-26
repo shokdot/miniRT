@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 15:48:40 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/26 19:32:26 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/26 19:55:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+t_ray_ptr init_ray (void)
 {
-	t_tracer_ptr	tracer;
+	t_ray_ptr res = (t_ray_ptr)malloc(sizeof(t_ray));
 
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	// init_mlx(tracer);
-	// init_img(tracer);
-	printf("MAP is OK\n");
+	return (res);
 }

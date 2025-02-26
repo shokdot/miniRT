@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/25 17:31:55 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:59:57 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <list_c.h>
 # include <math.h>
 # include <mlx.h>
+# include <ray.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -69,6 +70,7 @@ t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
 void			init_img(t_tracer_ptr tracer);
+t_ray_ptr		init_ray(void);
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
