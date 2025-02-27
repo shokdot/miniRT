@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:31:34 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/27 21:10:46 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int	render(t_tracer_ptr tracer)
 				ray = init_ray(ray_origin, ray_dir);
 				double t = intersect_api(node, *ray);
 
-				free(ray);  // Free the allocated ray
+				free(ray);
 				int color = vec3_to_hex(get_color(node));
 				if (t > 0)
 					my_mlx_pixel_put(tracer, x, y, color);
 			}
 		}
-	node = node->next;
+		node = node->next;
 	}
 	mlx_put_image_to_window(tracer->mlx->mlx, tracer->mlx->mlx_win,
 		tracer->img->img, 0, 0);
