@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 19:32:26 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/26 21:18:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/27 23:20:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_ray_ptr	init_ray(void)
 {
 	t_ray_ptr	res;
 
+	res = (t_ray_ptr)malloc(sizeof(t_ray));
 	res = (t_ray_ptr)ft_malloc(sizeof(t_ray));
 	return (res);
 }

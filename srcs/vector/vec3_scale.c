@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   vec3_scale.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 18:05:07 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:18:42 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/27 17:49:55 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/27 17:50:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <miniRT.h>
 
-void	ft_err(char *msg, int status)
+t_vec3	vec3_scale(t_vec3 v, double scalar)
 {
-	ft_putstr_fd("Error: ", STDERR_FILENO);
-	ft_putendl_fd(msg, STDERR_FILENO);
-	exit(status);
+    return (t_vec3){v.x * scalar, v.y * scalar, v.z * scalar};
 }

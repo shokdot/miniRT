@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   vec3_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 18:05:07 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:18:42 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/27 16:39:02 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/27 16:42:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <miniRT.h>
 
-void	ft_err(char *msg, int status)
+void vec3_print(t_vec3 a)
 {
-	ft_putstr_fd("Error: ", STDERR_FILENO);
-	ft_putendl_fd(msg, STDERR_FILENO);
-	exit(status);
+	printf("x: %f, y: %f, z: %f\n", a.x, a.y, a.z);
 }

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   vec3_reflect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 18:05:07 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:18:42 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/27 17:50:43 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/27 17:50:53 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <miniRT.h>
 
-void	ft_err(char *msg, int status)
+t_vec3	vec3_reflect(t_vec3 v, t_vec3 n)
 {
-	ft_putstr_fd("Error: ", STDERR_FILENO);
-	ft_putendl_fd(msg, STDERR_FILENO);
-	exit(status);
+    double dot_product = vec3_dot(v, n);
+    return vec3_sub(v, vec3_scale(n, 2 * dot_product));
 }

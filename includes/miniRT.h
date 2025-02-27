@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 19:59:57 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/27 21:53:01 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
-
+int				vec3_to_hex(t_vec3 color);
 void			print_matrix(char **line);
 void			tab_to_space(char *line);
 int				count_token(char **line);
@@ -39,6 +39,18 @@ bool			is_matrix_empty(char **matrix);
 bool			skip_check(char **line);
 bool			float_parse(char *line);
 double			deg_to_rad(double degrees);
+double			intersect_sphere(t_ray ray, t_sphere_ptr sphere);
+double			intersect_plane(t_ray ray, t_plane_ptr plane);
+double			intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder);
+double			intersect_api(t_node_ptr figure, t_ray ray);
+t_vec3			get_color(t_node_ptr figure);
+t_vec3			get_cords(t_node_ptr figure);
+t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
+
+
+
+
+
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);
@@ -66,11 +78,14 @@ void			check_obj_count(t_tracer_ptr tracer);
 
 // init
 void			init_mlx(t_tracer_ptr tracer);
+void			init_img(t_tracer_ptr tracer);
+void			init_vplane(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
-void			init_img(t_tracer_ptr tracer);
-t_ray_ptr		init_ray(void);
+t_ray_ptr 		init_ray (t_vec3 origin, t_vec3 direction);
+
+
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
@@ -101,6 +116,6 @@ void			free_plane(t_plane_ptr obj);
 void			free_sphere(t_sphere_ptr obj);
 
 // render
-void			render(t_tracer_ptr tracer);
+int				render(t_tracer_ptr tracer);
 
 #endif
