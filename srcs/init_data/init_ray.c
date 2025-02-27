@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 19:32:26 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/26 19:55:19 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/26 21:18:25 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_ray_ptr init_ray (void)
+t_ray_ptr	init_ray(void)
 {
-	t_ray_ptr res = (t_ray_ptr)malloc(sizeof(t_ray));
+	t_ray_ptr	res;
 
+	res = (t_ray_ptr)ft_malloc(sizeof(t_ray));
 	return (res);
 }
