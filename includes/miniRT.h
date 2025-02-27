@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 17:17:57 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/27 20:16:48 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ bool			is_matrix_empty(char **matrix);
 bool			skip_check(char **line);
 bool			float_parse(char *line);
 double			deg_to_rad(double degrees);
-double			intersect_sphere(t_ray ray, t_vec3 sphereCenter, double sphereRadius);
-double			intersect_plane(t_ray ray, t_vec3 planePoint, t_vec3 planeNormal);
-double			intersect_cylinder(t_ray ray, t_vec3 cylinderCenter, double cylinderRadius);
+double			intersect_sphere(t_ray ray, t_sphere_ptr sphere);
+double			intersect_plane(t_ray ray, t_plane_ptr plane);
+double			intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder);
+double			intersect_api(t_node_ptr figure, t_ray ray);
+t_vec3			get_color(t_node_ptr figure);
+t_vec3			get_cords(t_node_ptr figure);
+
 
 
 
