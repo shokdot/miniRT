@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:16:48 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/27 21:53:01 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ double			intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder);
 double			intersect_api(t_node_ptr figure, t_ray ray);
 t_vec3			get_color(t_node_ptr figure);
 t_vec3			get_cords(t_node_ptr figure);
+t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
+
 
 
 
