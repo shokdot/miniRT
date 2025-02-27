@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   vec3_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 19:30:06 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/27 16:18:18 by tigran           ###   ########.fr       */
+/*   Created: 2025/02/27 16:39:02 by tigran            #+#    #+#             */
+/*   Updated: 2025/02/27 16:42:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include <miniRT.h>
 
-#include <vec3.h>
-
-typedef struct s_ray		t_ray;
-typedef t_ray				*t_ray_ptr;
-
-struct						s_ray
+void vec3_print(t_vec3 a)
 {
-	t_vec3_ptr				origin;
-	t_vec3_ptr				direction;
-};
-
-t_vec3						calculate(t_ray ray, float t);
-
-#endif // RAY_H
+	printf("x: %f, y: %f, z: %f\n", a.x, a.y, a.z);
+}

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 22:20:28 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:21:13 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void			init_vplane(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
-t_ray_ptr		init_ray(void);
+t_ray_ptr 		init_ray (t_vec3 origin, t_vec3 direction);
+
 
 
 // fill_data
@@ -103,6 +104,6 @@ void			free_plane(t_plane_ptr obj);
 void			free_sphere(t_sphere_ptr obj);
 
 // render
-int			render(t_tracer_ptr tracer);
+int				render(t_tracer_ptr tracer);
 
 #endif
