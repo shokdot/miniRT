@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 20:19:42 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 17:25:57 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define HEIGHT 900
 # define RATIO 1.77
 
+# define CLOSE_WIN 17
 # define AMBIENT_TOKEN 3
 # define CAMERA_TOKEN 4
 # define LIGHT_TOKEN 3
