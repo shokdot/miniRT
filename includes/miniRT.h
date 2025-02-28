@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 21:53:01 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:16:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,7 @@ double			intersect_api(t_node_ptr figure, t_ray ray);
 t_vec3			get_color(t_node_ptr figure);
 t_vec3			get_cords(t_node_ptr figure);
 t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
-
-
-
-
-
+void			mlx_handler(t_tracer_ptr tracer);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);
@@ -77,15 +73,14 @@ void			validation_cylinder(char **line, t_tracer_ptr tracer);
 void			check_obj_count(t_tracer_ptr tracer);
 
 // init
+void			init_lib(t_tracer_ptr tracer);
 void			init_mlx(t_tracer_ptr tracer);
 void			init_img(t_tracer_ptr tracer);
 void			init_vplane(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
-t_ray_ptr 		init_ray (t_vec3 origin, t_vec3 direction);
-
-
+t_ray_ptr		init_ray(t_vec3 origin, t_vec3 direction);
 
 // fill_data
 void			fill_ambient_struct(char **line, t_tracer_ptr tracer);
@@ -102,6 +97,7 @@ void			free_line_map(char **line, t_tracer_ptr tracer);
 void			free_obj_tracer(t_tracer_ptr tracer);
 void			free_mlx(t_mlx_ptr mlx);
 void			free_scene(t_scene_ptr scene);
+void			free_destroy(t_tracer_ptr tracer);
 
 // free_objects
 void			free_figures(t_list_ptr figures);

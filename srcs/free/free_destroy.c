@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_destroy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:14:40 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/28 20:13:58 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/28 20:15:31 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+void	free_destroy(t_tracer_ptr tracer)
 {
-	t_tracer_ptr	tracer;
-
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	init_lib(tracer);
-	render(tracer);
-	mlx_handler(tracer);
+	// mlx_clear_window(tracer->mlx->mlx, tracer->mlx->mlx_win);
+	// mlx_destroy_image(tracer->mlx->mlx, tracer->img->img);
+	mlx_destroy_window(tracer->mlx->mlx, tracer->mlx->mlx_win);
+	free_obj_tracer(tracer);
+	exit(0);
 }

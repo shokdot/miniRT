@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_lib.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:14:40 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/28 20:09:54 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/28 20:10:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	main(int argc, char **argv)
+void	init_lib(t_tracer_ptr tracer)
 {
-	t_tracer_ptr	tracer;
-
-	args_check(argc, argv);
-	tracer = init_data();
-	parsing(argv[1], tracer);
-	init_lib(tracer);
-	render(tracer);
-	mlx_handler(tracer);
+	init_mlx(tracer);
+	init_img(tracer);
 }
