@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_negate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:51:54 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/27 17:52:06 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 14:36:19 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_vec3	vec3_negate(t_vec3 v)
 {
-    return (t_vec3){-v.x, -v.y, -v.z};
+	return ((t_vec3){-v.x, -v.y, -v.z});
 }
