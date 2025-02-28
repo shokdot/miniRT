@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 23:25:56 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:48:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define CYLINDER_TOKEN 6
 # define COLOR_TOKEN 3
 # define CORDS_TOKEN 3
+
+# define ON_DESTROY 17
+# define NO_EVENT 0
 
 typedef enum e_obj_type	t_obj_type;
 
