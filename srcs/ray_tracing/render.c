@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 15:52:42 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:05:32 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,71 +22,71 @@ void	my_mlx_pixel_put(t_tracer_ptr tracer, int x, int y, int color)
 }
 
 int	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
-		t_scene_ptr scene)
+		t_scene_ptr scene, t_node_ptr self)
 {
-	const double	epsilon = 0.001;
-	t_vec3			shadow_origin;
-	t_ray			shadow_ray;
-	t_node_ptr		node;
-	double			t;
+	t_vec3		shadow_origin;
+	t_ray		shadow_ray;
+	t_node_ptr	node;
+	double		t;
 
+	const double epsilon = 0.0001; // Adjusted for precision
 	shadow_origin = vec3_add(hit_point, vec3_scale(light_dir, epsilon));
-	shadow_ray.origin = &shadow_origin;
-	shadow_ray.direction = &light_dir;
+	shadow_ray = *init_ray(shadow_origin, light_dir); // leaks
 	node = scene->figures->head;
 	while (node != NULL)
 	{
+		if (node == self)
+		{
+			node = node->next;
+			continue ;
+		}
 		t = intersect_api(node, shadow_ray);
 		if (t > 0 && t < light_distance)
-			return (0);
+			return (1);
 		node = node->next;
 	}
-	return (1);
+	return (0);
 }
 
-double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene)
+double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene,
+		t_node_ptr self)
 {
+	t_vec3	light_vec;
 	double	distance;
 	t_vec3	light_dir;
 	double	cos_theta;
-	double	intensity;
-	t_vec3	light_vec;
 
 	light_vec = vec3_sub(*(scene->light->cords), hit_point);
 	distance = vec3_len(light_vec);
 	light_dir = vec3_norm(light_vec);
-	if (is_occluded(hit_point, light_dir, distance, scene))
-		return (1);
-	cos_theta = fabs(vec3_dot(normal, light_dir));
-	// attenuation = 1.0 / (distance * distance);
-	intensity = scene->ambient->ratio * scene->light->ratio * cos_theta;
-	// printf("angle: %f, attenuation: %f, intensity: %f\n", cos_theta,
-	// 	attenuation, intensity);
-	return (intensity);
+	if (is_occluded(hit_point, light_dir, distance, scene, self))
+		return (scene->ambient->ratio);
+	cos_theta = fmax(vec3_dot(normal, light_dir), 0.0);
+	return (scene->ambient->ratio + scene->light->ratio * cos_theta);
 }
 
 int	render(t_tracer_ptr tracer)
 {
-	t_vec3		up_ref;
-	t_vec3		right;
-	t_vec3		up;
-	t_node_ptr	figure;
-	double		ray_x;
-	double		ray_y;
-	t_vec3		ray_dir;
-	t_ray_ptr	ray;
-	double		t;
-	int			color;
-	t_vec3		hit_point;
-	double		intensity;
+	t_vec3 up_ref;
+	t_vec3 right;
+	t_vec3 up;
+	t_node_ptr figure;
+	double ray_x;
+	double ray_y;
+	t_vec3 ray_dir;
+	t_ray_ptr ray;
+	double t;
+	int color;
+	double intensity;
+	t_vec3 normal;
+	t_vec3 hit_point;
 
 	init_vplane(tracer);
-	t_vec3 forward = *(tracer->scene->camera->norm); // e.g. (0, 0, 1)
+	t_vec3 forward = *(tracer->scene->camera->norm);
 	up_ref = (t_vec3){0, 1, 0};
 	right = vec3_norm(vec3_cross(forward, up_ref));
 	up = vec3_norm(vec3_cross(right, forward));
 	t_vec3 ray_origin = *(tracer->scene->camera->cords); // e.g. (-50, 0, 20)
-	// Draw background white
 	for (int i = 0; i < HEIGHT; ++i)
 	{
 		for (int j = 0; j < WIDTH; ++j)
@@ -114,8 +114,9 @@ int	render(t_tracer_ptr tracer)
 				{
 					hit_point = vec3_add(*(ray->origin),
 							vec3_scale(*(ray->direction), t));
-					intensity = calculate_lighting(hit_point, ray_dir,
-							tracer->scene);
+					normal = get_normal(figure, hit_point);
+					intensity = calculate_lighting(hit_point, normal,
+							tracer->scene, figure);
 					color = vec3_to_hex(get_color(figure), intensity);
 					my_mlx_pixel_put(tracer, x, y, color);
 				}
