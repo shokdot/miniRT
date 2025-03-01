@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 13:43:27 by tigran           ###   ########.fr       */
+/*   Updated: 2025/03/01 13:46:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,8 @@ int	render(t_tracer_ptr tracer)
 	t_vec3		ray_dir;
 	t_ray_ptr	ray;
 	double		t;
-	t_vec3		hit_point;
-	t_vec3		normal;
-	t_vec3		light_dir;
-	double		diffuse;
-	double		ambient;
-	double		light_intensity;
-	t_vec3		base_color;
-	t_vec3		ambient_color;
-	t_vec3		final_color;
 	int			color;
 
-	init_img(tracer);
 	init_vplane(tracer);
 	// Set up camera coordinate system
 	t_vec3 forward = *(tracer->scene->camera->norm); // e.g. (0, 0, 1)
@@ -76,28 +66,7 @@ int	render(t_tracer_ptr tracer)
 				t = intersect_api(node, *ray);
 				if (t > 0)
 				{
-					hit_point = vec3_add(ray_origin, vec3_scale(ray_dir, t));
-					normal = get_normal(node, hit_point);
-					light_dir = vec3_norm(vec3_sub(*(tracer->scene->light->cords),
-								hit_point));
-					diffuse = fmax(0, vec3_dot(normal, light_dir));
-					ambient = tracer->scene->ambient->ratio;
-					light_intensity = tracer->scene->light->ratio;
-					base_color = get_color(node);
-					ambient_color = *(tracer->scene->ambient->color);
-					final_color.x = base_color.x * (ambient * (ambient_color.x
-								/ 255.0) + light_intensity * diffuse);
-					final_color.y = base_color.y * (ambient * (ambient_color.y
-								/ 255.0) + light_intensity * diffuse);
-					final_color.z = base_color.z * (ambient * (ambient_color.z
-								/ 255.0) + light_intensity * diffuse);
-					if (final_color.x > 255)
-						final_color.x = 255;
-					if (final_color.y > 255)
-						final_color.y = 255;
-					if (final_color.z > 255)
-						final_color.z = 255;
-					color = vec3_to_hex(final_color);
+					color = vec3_to_hex(get_color(node));
 					my_mlx_pixel_put(tracer, x, y, color);
 				}
 				free(ray);
