@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 14:15:26 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:06:06 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_vec3			get_color(t_node_ptr figure);
 t_vec3			get_cords(t_node_ptr figure);
 t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
 void			mlx_handler(t_tracer_ptr tracer);
+double			calculate_discriminant(double a, double b, double c_term);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);

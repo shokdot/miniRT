@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 14:55:46 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:52:42 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene)
 	double	distance;
 	t_vec3	light_dir;
 	double	cos_theta;
-	double	attenuation;
-	double	diffuse_intensity;
+	double	intensity;
 	t_vec3	light_vec;
 
 	light_vec = vec3_sub(*(scene->light->cords), hit_point);
@@ -58,11 +57,12 @@ double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene)
 	light_dir = vec3_norm(light_vec);
 	if (is_occluded(hit_point, light_dir, distance, scene))
 		return (1);
-	cos_theta = fmax(0, vec3_dot(normal, light_dir));
-	attenuation = 1.0 / (distance * distance);
-	diffuse_intensity = scene->ambient->ratio * scene->light->ratio * cos_theta
-		* attenuation;
-	return (diffuse_intensity);
+	cos_theta = fabs(vec3_dot(normal, light_dir));
+	// attenuation = 1.0 / (distance * distance);
+	intensity = scene->ambient->ratio * scene->light->ratio * cos_theta;
+	// printf("angle: %f, attenuation: %f, intensity: %f\n", cos_theta,
+	// 	attenuation, intensity);
+	return (intensity);
 }
 
 int	render(t_tracer_ptr tracer)
