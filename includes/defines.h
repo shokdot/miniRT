@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 13:42:32 by tigran           ###   ########.fr       */
+/*   Updated: 2025/03/01 22:34:03 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 1280
-# define HEIGHT 700
+# define WIDTH 1600
+# define HEIGHT 900
 # define RATIO 1.77
+# define EPSILION 1e-6
 
 # define CLOSE_WIN 17
 # define AMBIENT_TOKEN 3

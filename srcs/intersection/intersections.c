@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:08:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/01 16:09:10 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/01 22:18:00 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	intersect_sphere(t_ray ray, t_sphere_ptr sphere)
 	t1 = (-b - sqrt_discriminant) / (2 * a);
 	t2 = (-b + sqrt_discriminant) / (2 * a);
 	if (t1 > 0 && t2 > 0)
-		return (fmax(t1, t2));
+		return (fmin(t1, t2));
 	else if (t1 > 0)
 		return (t1);
 	else if (t2 > 0)
