@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:39:02 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/27 16:42:45 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 14:37:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void vec3_print(t_vec3 a)
+void	vec3_print(t_vec3 a)
 {
 	printf("x: %f, y: %f, z: %f\n", a.x, a.y, a.z);
 }

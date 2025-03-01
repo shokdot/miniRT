@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:12:55 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/26 18:15:11 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 14:37:04 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	vec3_len(t_vec3 v)
 {
-	return sqrt(vec3_dot(v, v));
+	return (sqrt(vec3_dot(v, v)));
 }

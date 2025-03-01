@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ray.c                                         :+:      :+:    :+:   */
+/*   mlx_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 19:32:26 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/28 14:29:52 by healeksa         ###   ########.fr       */
+/*   Created: 2025/02/28 20:12:54 by healeksa          #+#    #+#             */
+/*   Updated: 2025/02/28 20:13:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_ray_ptr	init_ray(t_vec3 origin, t_vec3 direction)
+void	mlx_handler(t_tracer_ptr tracer)
 {
-	t_ray_ptr	res;
-
-	res = (t_ray_ptr)malloc(sizeof(t_ray));
-	res->direction = (t_vec3_ptr)ft_malloc(sizeof(t_vec3));
-	res->origin = (t_vec3_ptr)ft_malloc(sizeof(t_vec3));
-	*(res->direction) = direction;
-	*(res->origin) = origin;
-	return (res);
+	mlx_hook(tracer->mlx->mlx_win, ON_DESTROY, NO_EVENT, (void *)free_destroy,
+		tracer);
+	mlx_loop(tracer->mlx->mlx);
 }

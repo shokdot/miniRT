@@ -6,15 +6,15 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 17:25:57 by tigran           ###   ########.fr       */
+/*   Updated: 2025/03/01 13:42:32 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 1600
-# define HEIGHT 900
+# define WIDTH 1280
+# define HEIGHT 700
 # define RATIO 1.77
 
 # define CLOSE_WIN 17
@@ -26,6 +26,9 @@
 # define CYLINDER_TOKEN 6
 # define COLOR_TOKEN 3
 # define CORDS_TOKEN 3
+
+# define ON_DESTROY 17
+# define NO_EVENT 0
 
 typedef enum e_obj_type	t_obj_type;
 

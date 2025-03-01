@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_cross.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:07:49 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/26 18:10:34 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 14:36:25 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
 	t_vec3	res;
 
-	res = (t_vec3){a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x};
+	res = (t_vec3){a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y
+		* b.x};
 	return (res);
 }

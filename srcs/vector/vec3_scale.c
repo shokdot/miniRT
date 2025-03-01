@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_scale.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:49:55 by tigran            #+#    #+#             */
-/*   Updated: 2025/02/27 17:50:58 by tigran           ###   ########.fr       */
+/*   Updated: 2025/02/28 14:36:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_vec3	vec3_scale(t_vec3 v, double scalar)
 {
-    return (t_vec3){v.x * scalar, v.y * scalar, v.z * scalar};
+	return ((t_vec3){v.x * scalar, v.y * scalar, v.z * scalar});
 }

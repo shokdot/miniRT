@@ -8,7 +8,7 @@ NAME = miniRT
 
 SRC_DIR = srcs/
 OBJ_DIR = build
-SUBDIRS = init_data parsing utils validation fill_structs free vector ray_tracing ray
+SUBDIRS = init_data parsing utils validation fill_structs free vector ray_tracing ray intersection
 
 LIBFTPATH = libs/libft/
 LISTPATH = libs/list_c/
