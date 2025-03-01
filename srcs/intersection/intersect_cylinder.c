@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/01 16:06:13 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:13:19 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cylinder,
 	t_bottom = intersect_cap(ray, cylinder, ymin);
 	t_top = intersect_cap(ray, cylinder, ymax);
 	if (t_bottom > 0 && t_top > 0)
-		return (t_bottom < t_top ? t_bottom : t_top);
+		return (fmin(t_bottom, t_top));
 	else if (t_bottom > 0)
 		return (t_bottom);
 	else if (t_top > 0)
@@ -109,6 +109,8 @@ double	intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder)
 	t_side = compute_side_intersection(ray, cylinder);
 	t_caps = compute_cap_intersection(ray, cylinder, ymin, ymax);
 	if (t_side > 0 && t_caps > 0)
-		return ((t_side < t_caps) ? t_side : t_caps);
-	return ((t_side > 0) ? t_side : t_caps);
+		return (fmin(t_side, t_caps));
+	if (t_side > 0)
+		return (t_side);
+	return (t_caps);
 }
