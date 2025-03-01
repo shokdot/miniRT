@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:16:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/01 14:15:26 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
-int				vec3_to_hex(t_vec3 color);
+int				vec3_to_hex(t_vec3 color, double intensity);
 void			print_matrix(char **line);
 void			tab_to_space(char *line);
 int				count_token(char **line);
