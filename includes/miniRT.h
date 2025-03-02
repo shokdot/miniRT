@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:16:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:06:06 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
 
 // utils
-int				vec3_to_hex(t_vec3 color);
+int				vec3_to_hex(t_vec3 color, double intensity);
 void			print_matrix(char **line);
 void			tab_to_space(char *line);
 int				count_token(char **line);
@@ -47,6 +47,7 @@ t_vec3			get_color(t_node_ptr figure);
 t_vec3			get_cords(t_node_ptr figure);
 t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
 void			mlx_handler(t_tracer_ptr tracer);
+double			calculate_discriminant(double a, double b, double c_term);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);

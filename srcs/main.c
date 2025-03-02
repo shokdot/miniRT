@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:00:43 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:14:40 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/01 13:43:00 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
+
+void exit_win(t_tracer_ptr tracer UNUSED)
+{
+	printf("Window closed\n");
+	exit(EXIT_SUCCESS);
+}
 
 int	main(int argc, char **argv)
 {

@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_to_hex.c                                      :+:      :+:    :+:   */
+/*   calculate_discriminant.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 22:04:55 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/01 18:58:03 by tyavroya         ###   ########.fr       */
+/*   Created: 2025/03/01 16:05:36 by tyavroya          #+#    #+#             */
+/*   Updated: 2025/03/01 16:05:42 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-int	vec3_to_hex(t_vec3 color, double intensity)
+double	calculate_discriminant(double a, double b, double c_term)
 {
-	int	r;
-	int	g;
-	int	b;
+	double discriminant;
 
-	r = ((int)(color.x * intensity) & 0xFF);
-	g = ((int)(color.y * intensity) & 0xFF);
-	b = ((int)(color.z * intensity) & 0xFF);
-	return ((r << 16) | (g << 8) | b);
+	discriminant = b * b - 4 * a * c_term;
+	if (discriminant < 0)
+		return (-1);
+	return (sqrt(discriminant));
 }
