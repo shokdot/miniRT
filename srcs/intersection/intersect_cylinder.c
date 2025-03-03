@@ -6,111 +6,209 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/01 16:13:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:53:59 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include <miniRT.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-static double	check_height(t_ray ray, t_cylinder_ptr cylinder, double t)
+#ifndef EPSILION
+# define EPSILION 1e-6
+#endif
+
+/*
+Assumed vector structure and functions:
+typedef struct s_vec3 {
+	double x;
+	double y;
+	double z;
+}				t_vec3;
+
+t_vec3			vec3_add(t_vec3 a, t_vec3 b);
+t_vec3			vec3_sub(t_vec3 a, t_vec3 b);
+t_vec3			vec3_scale(t_vec3 v, double scalar);
+double			vec3_dot(t_vec3 v1, t_vec3 v2);
+t_vec3			vec3_norm(t_vec3 v);
+double			vec3_len(t_vec3 v);
+*/
+
+/*
+ * Cylinder structure for a finite cylinder with arbitrary orientation.
+ * - cords: pointer to t_vec3 representing the cylinder's center (mid-height)
+ *
+	- norm: pointer to t_vec3 representing the cylinder's axis (will be normalized)
+ * - diameter: full diameter of the cylinder (radius = diameter / 2)
+ * - height: full height of the cylinder
+ */
+/*
+
+	* Check whether the side intersection candidate at parameter t is within the cylinder's height.
+ * For an arbitrarily oriented cylinder, we compute:
+ *    proj = (P(t) - C) · V.
+ * The candidate is valid if |proj| <= h/2.
+ */
+static double	check_height(t_ray ray, t_cylinder_ptr cyl, double t)
 {
-	double	y;
-	double	ymin;
-	double	ymax;
+	t_vec3	P;
+	t_vec3	CP;
+	double	proj;
 
-	if (t <= 0)
+	if (t <= EPSILION)
 		return (-1);
-	y = ray.origin->y + t * ray.direction->y;
-	ymin = cylinder->cords->y - cylinder->height / 2.0;
-	ymax = cylinder->cords->y + cylinder->height / 2.0;
-	if (y >= ymin && y <= ymax)
+	P = vec3_add(*(ray.origin), vec3_scale(*(ray.direction), t));
+	CP = vec3_sub(P, *(cyl->cords));
+	proj = vec3_dot(CP, vec3_norm(*(cyl->norm)));
+	// Ensure V is unit-length
+	if (fabs(proj) <= cyl->height / 2.0)
 		return (t);
 	return (-1);
 }
 
-static double	intersect_cap(t_ray ray, t_cylinder_ptr cylinder, double y_cap)
+/*
+ * Compute side intersection for an arbitrarily oriented infinite cylinder.
+ * We use the formulas:
+ *   D_perp = D - (D · V)V,   CO_perp = (O - C) - ((O - C) · V)V.
+ * Then solve A t^2 + B t + C = 0.
+ */
+static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 {
-	t_vec3	o;
-	t_vec3	d;
-	t_vec3	c;
-	double	t;
-	t_vec3	p;
-	double	dist;
+	t_vec3	O;
+	t_vec3	D;
+	t_vec3	C;
+	t_vec3	V;
+	double	r;
+	t_vec3	CO;
+	double	DdotV;
+	double	COdotV;
+	t_vec3	D_perp;
+	t_vec3	CO_perp;
+	double	A;
+	double	B;
+	double	C_val;
+	double	sqrt_disc;
+	double	t1;
+	double	t2;
+	double	t_candidate;
+	double	check1;
+	double	check2;
 
-	o = *(ray.origin);
-	d = *(ray.direction);
-	c = *(cylinder->cords);
-	if (fabs(d.y) < 1e-6)
-		return (-1);
-	t = (y_cap - o.y) / d.y;
-	p = vec3_add(o, vec3_scale(d, t));
-	dist = pow(p.x - c.x, 2) + pow(p.z - c.z, 2);
-	if (t > 0 && dist <= pow(cylinder->diameter / 2.0, 2))
-		return (t);
-	return (-1);
-}
-
-static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cylinder)
-{
-	double	t;
-
-	t_vec3 o, d, c;
-	double a, b, c_term, sqrt_disc, t1, t2;
-	o = *(ray.origin);
-	d = *(ray.direction);
-	c = *(cylinder->cords);
-	a = d.x * d.x + d.z * d.z;
-	b = 2.0 * ((o.x - c.x) * d.x + (o.z - c.z) * d.z);
-	c_term = (o.x - c.x) * (o.x - c.x) + (o.z - c.z) * (o.z - c.z)
-		- pow(cylinder->diameter / 2.0, 2);
-	sqrt_disc = calculate_discriminant(a, b, c_term);
+	O = *(ray.origin);
+	D = *(ray.direction);
+	C = *(cyl->cords);
+	// Normalize the cylinder's axis
+	V = vec3_norm(*(cyl->norm));
+	r = cyl->diameter / 2.0;
+	CO = vec3_sub(O, C);
+	DdotV = vec3_dot(D, V);
+	COdotV = vec3_dot(CO, V);
+	D_perp = vec3_sub(D, vec3_scale(V, DdotV));
+	CO_perp = vec3_sub(CO, vec3_scale(V, COdotV));
+	A = vec3_dot(D_perp, D_perp);
+	B = 2.0 * vec3_dot(D_perp, CO_perp);
+	C_val = vec3_dot(CO_perp, CO_perp) - r * r;
+	sqrt_disc = calculate_discriminant(A, B, C_val);
 	if (sqrt_disc < 0)
 		return (-1);
-	t1 = (-b - sqrt_disc) / (2 * a);
-	t2 = (-b + sqrt_disc) / (2 * a);
-	t = check_height(ray, cylinder, t1);
-	if (t > 0)
-		return (t);
-	t = check_height(ray, cylinder, t2);
-	if (t > 0)
+	t1 = (-B - sqrt_disc) / (2.0 * A);
+	t2 = (-B + sqrt_disc) / (2.0 * A);
+	t_candidate = -1;
+	check1 = check_height(ray, cyl, t1);
+	check2 = check_height(ray, cyl, t2);
+	if (check1 > EPSILION && check2 > EPSILION)
+		t_candidate = (check1 < check2) ? check1 : check2;
+	else if (check1 > EPSILION)
+		t_candidate = check1;
+	else if (check2 > EPSILION)
+		t_candidate = check2;
+	return (t_candidate);
+}
+
+/*
+ * Compute intersection with a cap (top or bottom) of the cylinder.
+ * y_cap is the coordinate along the cylinder's axis (i.e., projection value)
+ * for the cap center. For an arbitrary cylinder, the cap center is:
+ *    P_cap = C + (h/2)*V   or   C - (h/2)*V.
+ * We compute the ray-plane intersection with the cap, and then check if the
+ * distance from the hit point to the cap center is less than or equal to r.
+ */
+static double	intersect_cap(t_ray ray, t_cylinder_ptr cyl, int top)
+{
+	t_vec3	O;
+	t_vec3	D;
+	t_vec3	C;
+	t_vec3	V;
+	double	r;
+	double	h_half;
+	t_vec3	cap_center;
+	double	DdotV;
+	double	t;
+	t_vec3	P;
+
+	O = *(ray.origin);
+	D = *(ray.direction);
+	C = *(cyl->cords);
+	V = vec3_norm(*(cyl->norm));
+	r = cyl->diameter / 2.0;
+	h_half = cyl->height / 2.0;
+	// Cap center: top if top==1, bottom if top==0.
+	if (top)
+		cap_center = vec3_add(C, vec3_scale(V, h_half));
+	else
+		cap_center = vec3_add(C, vec3_scale(V, -h_half));
+	// Ray-plane intersection:
+	DdotV = vec3_dot(D, V);
+	if (fabs(DdotV) < EPSILION)
+		return (-1);
+	t = vec3_dot(vec3_sub(cap_center, O), V) / DdotV;
+	if (t <= EPSILION)
+		return (-1);
+	P = vec3_add(O, vec3_scale(D, t));
+	if (vec3_len(vec3_sub(P, cap_center)) <= r)
 		return (t);
 	return (-1);
 }
 
-static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cylinder,
-		double ymin, double ymax)
+/*
+ * Compute the intersection with the cylinder caps.
+ * Returns the smallest positive t among the two caps.
+ */
+static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cyl)
 {
-	double	t_bottom;
 	double	t_top;
+	double	t_bottom;
 
-	t_bottom = intersect_cap(ray, cylinder, ymin);
-	t_top = intersect_cap(ray, cylinder, ymax);
-	if (t_bottom > 0 && t_top > 0)
-		return (fmin(t_bottom, t_top));
-	else if (t_bottom > 0)
-		return (t_bottom);
-	else if (t_top > 0)
+	t_top = intersect_cap(ray, cyl, 1);
+	t_bottom = intersect_cap(ray, cyl, 0);
+	if (t_top > EPSILION && t_bottom > EPSILION)
+		return (fmin(t_top, t_bottom));
+	else if (t_top > EPSILION)
 		return (t_top);
-	else
-		return (-1);
+	else if (t_bottom > EPSILION)
+		return (t_bottom);
+	return (-1);
 }
 
-double	intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder)
-{
-	t_vec3	c;
-	double	ymin;
-	double	ymax;
-	double	t_side;
-	double	t_caps;
+/*
+ * Final intersection function for a finite, arbitrarily oriented cylinder.
 
-	c = *(cylinder->cords);
-	ymin = c.y - (cylinder->height / 2.0);
-	ymax = c.y + (cylinder->height / 2.0);
-	t_side = compute_side_intersection(ray, cylinder);
-	t_caps = compute_cap_intersection(ray, cylinder, ymin, ymax);
-	if (t_side > 0 && t_caps > 0)
-		return (fmin(t_side, t_caps));
-	if (t_side > 0)
+	* It computes the side and cap intersections and returns the nearest positive t.
+ */
+double	intersect_cylinder(t_ray ray, t_cylinder_ptr cyl)
+{
+	double	t_side;
+	double	t_cap;
+
+	t_side = compute_side_intersection(ray, cyl);
+	t_cap = compute_cap_intersection(ray, cyl);
+	if (t_side > EPSILION && t_cap > EPSILION)
+		return (fmin(t_side, t_cap));
+	else if (t_side > EPSILION)
 		return (t_side);
-	return (t_caps);
+	else if (t_cap > EPSILION)
+		return (t_cap);
+	else
+		return (-1);
 }

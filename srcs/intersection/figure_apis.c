@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:47:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/01 22:08:40 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:30:19 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_vec3	get_normal(t_node_ptr node, t_vec3 hit_point)
 	t_vec3	axis_point;
 	t_vec3	lateral_normal;
 	double	half_height;
+	t_vec3	norm_cylinder;
 
 	obj = node->data;
 	if (node->obj_type == SPHERE)
@@ -74,12 +75,13 @@ t_vec3	get_normal(t_node_ptr node, t_vec3 hit_point)
 	else if (node->obj_type == CYLINDER)
 	{
 		cp = vec3_sub(hit_point, *((t_cylinder_ptr)obj)->cords);
-		proj = vec3_dot(cp, *(((t_cylinder_ptr)obj)->norm));
+		norm_cylinder = vec3_norm(*(((t_cylinder_ptr)obj)->norm));
+		proj = vec3_dot(cp, norm_cylinder);
 		axis_point = vec3_add(*(((t_cylinder_ptr)obj)->cords),
 				vec3_scale(*(((t_cylinder_ptr)obj)->norm), proj));
 		lateral_normal = vec3_norm(vec3_sub(hit_point, axis_point));
 		half_height = ((t_cylinder_ptr)obj)->height / 2.0;
-		if (fabs(proj) >= half_height - 0.001)
+		if (fabs(proj) >= half_height - EPSILION)
 		{
 			if (proj > 0)
 				return (*(((t_cylinder_ptr)obj)->norm));

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:59:00 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/03 00:37:07 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:40:38 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1600
+# define HEIGHT 900
 
 # define EPSILION 1e-6
 
