@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:47:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/03 18:30:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:19:28 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ t_vec3	get_normal(t_node_ptr node, t_vec3 hit_point)
 		norm_cylinder = vec3_norm(*(((t_cylinder_ptr)obj)->norm));
 		proj = vec3_dot(cp, norm_cylinder);
 		axis_point = vec3_add(*(((t_cylinder_ptr)obj)->cords),
-				vec3_scale(*(((t_cylinder_ptr)obj)->norm), proj));
+				vec3_scale(norm_cylinder, proj));
 		lateral_normal = vec3_norm(vec3_sub(hit_point, axis_point));
 		half_height = ((t_cylinder_ptr)obj)->height / 2.0;
 		if (fabs(proj) >= half_height - EPSILION)
 		{
 			if (proj > 0)
-				return (*(((t_cylinder_ptr)obj)->norm));
+				return (norm_cylinder);
 			else
-				return (vec3_negate(*(((t_cylinder_ptr)obj)->norm)));
+				return (vec3_negate(norm_cylinder));
 		}
 		return (lateral_normal);
 	}

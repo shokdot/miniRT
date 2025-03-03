@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/03 17:53:59 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:26:31 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef EPSILION
-# define EPSILION 1e-6
-#endif
-
-/*
-Assumed vector structure and functions:
-typedef struct s_vec3 {
-	double x;
-	double y;
-	double z;
-}				t_vec3;
-
-t_vec3			vec3_add(t_vec3 a, t_vec3 b);
-t_vec3			vec3_sub(t_vec3 a, t_vec3 b);
-t_vec3			vec3_scale(t_vec3 v, double scalar);
-double			vec3_dot(t_vec3 v1, t_vec3 v2);
-t_vec3			vec3_norm(t_vec3 v);
-double			vec3_len(t_vec3 v);
-*/
-
-/*
- * Cylinder structure for a finite cylinder with arbitrary orientation.
- * - cords: pointer to t_vec3 representing the cylinder's center (mid-height)
- *
-	- norm: pointer to t_vec3 representing the cylinder's axis (will be normalized)
- * - diameter: full diameter of the cylinder (radius = diameter / 2)
- * - height: full height of the cylinder
- */
-/*
-
-	* Check whether the side intersection candidate at parameter t is within the cylinder's height.
- * For an arbitrarily oriented cylinder, we compute:
- *    proj = (P(t) - C) · V.
- * The candidate is valid if |proj| <= h/2.
- */
 static double	check_height(t_ray ray, t_cylinder_ptr cyl, double t)
 {
 	t_vec3	P;

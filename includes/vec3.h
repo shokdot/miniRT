@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:51:42 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/27 21:54:37 by tigran           ###   ########.fr       */
+/*   Updated: 2025/03/03 20:26:09 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ t_vec3					vec3_sub(t_vec3 a, t_vec3 b);
 t_vec3					vec3_scale(t_vec3 v, double scalar);
 t_vec3					vec3_reflect(t_vec3 v, t_vec3 n);
 t_vec3					vec3_negate(t_vec3 v);
-
 
 #endif

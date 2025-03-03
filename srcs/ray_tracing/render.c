@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/03 17:56:29 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:18:32 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
 			continue ;
 		}
 		t = intersect_api(node, shadow_ray);
-		if (t > EPSILION && t < light_distance)
+		if (t > EPSILION && t < light_distance - EPSILION)
 			return (1);
 		node = node->next;
 	}
@@ -61,12 +61,10 @@ double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene,
 	light_dir = vec3_norm(light_vec);
 	if (is_occluded(hit_point, light_dir, distance, scene, self))
 		return (scene->ambient->ratio);
-	// Ensure normal is correctly normalized
 	normal = vec3_norm(normal);
 	cos_theta = fmax(vec3_dot(normal, light_dir), 0.0);
-	cos_theta = fmin(cos_theta, 1.0); // Prevent values >1 due to precision
 	intensity = scene->ambient->ratio + scene->light->ratio * cos_theta;
-	return (fmin(intensity, 1.0)); // Final clamping
+	return (fmin(intensity, 1.0));
 }
 
 int	render(t_tracer_ptr tracer)
@@ -90,25 +88,21 @@ int	render(t_tracer_ptr tracer)
 	int			color;
 
 	init_vplane(tracer);
-	/* Setup camera coordinate system */
 	forward = *(tracer->scene->camera->norm);
 	up_ref = (t_vec3){0, 1, 0};
 	right = vec3_norm(vec3_cross(forward, up_ref));
 	up = vec3_norm(vec3_cross(right, forward));
 	ray_origin = *(tracer->scene->camera->cords);
-	/* Loop over each pixel */
 	for (int y = 0; y < HEIGHT; y++)
 	{
 		for (int x = 0; x < WIDTH; x++)
 		{
-			/* Compute ray direction for the current pixel */
 			ray_x = (x - WIDTH / 2.0) * tracer->scene->vplane->pixel_dx;
 			ray_y = (HEIGHT / 2.0 - y) * tracer->scene->vplane->pixel_dy;
 			ray_dir = vec3_norm((t_vec3){forward.x + ray_x * right.x + ray_y
 					* up.x, forward.y + ray_x * right.y + ray_y * up.y,
 					forward.z + ray_x * right.z + ray_y * up.z});
 			ray = init_ray(ray_origin, ray_dir);
-			/* Find the nearest intersection among all objects */
 			nearest_t = INFINITY;
 			nearest_obj = NULL;
 			node = tracer->scene->figures->head;
@@ -122,8 +116,6 @@ int	render(t_tracer_ptr tracer)
 				}
 				node = node->next;
 			}
-			/* If we found an intersection,
-				compute lighting and draw the pixel */
 			if (nearest_obj)
 			{
 				hit_point = vec3_add(*(ray->origin),
@@ -135,14 +127,10 @@ int	render(t_tracer_ptr tracer)
 				my_mlx_pixel_put(tracer, x, y, color);
 			}
 			else
-			{
-				/* No intersection: draw background color */
 				my_mlx_pixel_put(tracer, x, y, 0xFFFFFF);
-			}
 			free(ray);
 		}
 	}
-	/* Finally, put the image to the window */
 	mlx_put_image_to_window(tracer->mlx->mlx, tracer->mlx->mlx_win,
 		tracer->img->img, 0, 0);
 	return (123);
