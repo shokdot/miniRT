@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 13:07:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/03 20:18:32 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:09:06 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-
-void	my_mlx_pixel_put(t_tracer_ptr tracer, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = tracer->img->img_data + (y * tracer->img->size_line + x
-			* (tracer->img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
 		t_scene_ptr scene, t_node_ptr self)
@@ -39,7 +30,7 @@ int	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
 			node = node->next;
 			continue ;
 		}
-		t = intersect_api(node, shadow_ray);
+		t = check_intersection(node, shadow_ray);
 		if (t > EPSILION && t < light_distance - EPSILION)
 			return (1);
 		node = node->next;
@@ -108,7 +99,7 @@ int	render(t_tracer_ptr tracer)
 			node = tracer->scene->figures->head;
 			while (node)
 			{
-				t = intersect_api(node, *ray);
+				t = check_intersection(node, *ray);
 				if (t > EPSILION && t < nearest_t)
 				{
 					nearest_t = t;
@@ -120,14 +111,14 @@ int	render(t_tracer_ptr tracer)
 			{
 				hit_point = vec3_add(*(ray->origin),
 						vec3_scale(*(ray->direction), nearest_t));
-				normal = get_normal(nearest_obj, hit_point);
+				normal = get_figure_normal(nearest_obj, hit_point);
 				intensity = calculate_lighting(hit_point, normal, tracer->scene,
 						nearest_obj);
-				color = vec3_to_hex(get_color(nearest_obj), intensity);
-				my_mlx_pixel_put(tracer, x, y, color);
+				color = vec3_to_hex(get_figure_color(nearest_obj), intensity);
+				put_pixel(tracer, x, y, color);
 			}
 			else
-				my_mlx_pixel_put(tracer, x, y, 0xFFFFFF);
+				put_pixel(tracer, x, y, 0xFFFFFF);
 			free(ray);
 		}
 	}

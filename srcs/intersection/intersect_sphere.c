@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersections.c                                    :+:      :+:    :+:   */
+/*   intersect_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:08:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/01 22:18:00 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:42:32 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,4 @@ double	intersect_sphere(t_ray ray, t_sphere_ptr sphere)
 		return (t2);
 	else
 		return (-1);
-}
-
-double	intersect_plane(t_ray ray, t_plane_ptr plane)
-{
-	double	denom;
-	t_vec3	diff;
-	double	t;
-
-	denom = vec3_dot(*(ray.direction), *(plane->norm));
-	// Check if the ray is parallel to the plane
-	if (fabs(denom) < 1e-6)
-		return (-1); // No intersection (or the ray lies in the plane)
-	diff = vec3_sub(*(plane->cords), *(ray.origin));
-	t = vec3_dot(diff, *(plane->norm)) / denom;
-	return ((t >= 0) ? t : -1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/01 16:06:06 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:18:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ double			deg_to_rad(double degrees);
 double			intersect_sphere(t_ray ray, t_sphere_ptr sphere);
 double			intersect_plane(t_ray ray, t_plane_ptr plane);
 double			intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder);
-double			intersect_api(t_node_ptr figure, t_ray ray);
-t_vec3			get_color(t_node_ptr figure);
-t_vec3			get_cords(t_node_ptr figure);
-t_vec3			get_normal(t_node_ptr node, t_vec3 hit_point);
+double			check_intersection(t_node_ptr figure, t_ray ray);
 void			mlx_handler(t_tracer_ptr tracer);
 double			calculate_discriminant(double a, double b, double c_term);
+
+// figure API
+t_vec3			get_figure_color(t_node_ptr figure);
+t_vec3			get_figure_cords(t_node_ptr figure);
+t_vec3			get_figure_normal(t_node_ptr node, t_vec3 hit_point);
 
 // parse objects
 void			parse_ambient(char **line, t_tracer_ptr tracer);
@@ -100,19 +102,23 @@ void			free_mlx(t_mlx_ptr mlx);
 void			free_scene(t_scene_ptr scene);
 void			free_destroy(t_tracer_ptr tracer);
 
-// free_objects
+// free_figures
 void			free_figures(t_list_ptr figures);
+void			free_sphere(t_sphere_ptr obj);
+void			free_plane(t_plane_ptr obj);
+void			free_cylinder(t_cylinder_ptr obj);
+
+// free_objects
 void			free_objs(t_scene_ptr scene);
 void			free_ambient(t_ambient_ptr obj);
 void			free_camera(t_camera_ptr obj);
-void			free_cylinder(t_cylinder_ptr obj);
-
-// lol
 void			free_light(t_light_ptr obj);
-void			free_plane(t_plane_ptr obj);
-void			free_sphere(t_sphere_ptr obj);
 
 // render
 int				render(t_tracer_ptr tracer);
+
+// tracer utils
+void			put_pixel(t_tracer_ptr tracer, int x, int y, int color);
+t_vec3			get_cylinder_normal(t_cylinder_ptr obj, t_vec3 hit_point);
 
 #endif
