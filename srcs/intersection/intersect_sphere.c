@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:08:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/04 18:44:15 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/04 20:18:46 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,11 @@ static t_vec3	calculate_cofficent(t_ray ray, t_sphere_ptr sphere)
 	return ((t_vec3){a, b, c});
 }
 
-double	intersect_sphere(t_ray ray, t_sphere_ptr sphere)
+static double	calc_hit_points(t_vec3 cofficent, double discriminant)
 {
-	double	discriminant;
 	double	t1;
 	double	t2;
-	t_vec3	cofficent;
 
-	cofficent = calculate_cofficent(ray, sphere);
-	discriminant = calculate_discriminant(cofficent.x, cofficent.y,
-			cofficent.z);
-	if (discriminant < 0)
-		return (-1);
 	t1 = (-cofficent.y - discriminant) / (2 * cofficent.x);
 	t2 = (-cofficent.y + discriminant) / (2 * cofficent.x);
 	if (t1 > 0 && t2 > 0)
@@ -48,4 +41,17 @@ double	intersect_sphere(t_ray ray, t_sphere_ptr sphere)
 		return (t2);
 	else
 		return (-1);
+}
+
+double	intersect_sphere(t_ray ray, t_sphere_ptr sphere)
+{
+	double	discriminant;
+	t_vec3	cofficent;
+
+	cofficent = calculate_cofficent(ray, sphere);
+	discriminant = calculate_discriminant(cofficent.x, cofficent.y,
+			cofficent.z);
+	if (discriminant < 0)
+		return (-1);
+	return (calc_hit_points(cofficent, discriminant));
 }
