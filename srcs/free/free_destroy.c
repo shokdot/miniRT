@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:13:58 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/28 20:15:31 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:49:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	free_destroy(t_tracer_ptr tracer)
 {
-	// mlx_clear_window(tracer->mlx->mlx, tracer->mlx->mlx_win);
-	// mlx_destroy_image(tracer->mlx->mlx, tracer->img->img);
+	mlx_destroy_image(tracer->mlx->mlx, tracer->img->img);
+	mlx_clear_window(tracer->mlx->mlx, tracer->mlx->mlx_win);
 	mlx_destroy_window(tracer->mlx->mlx, tracer->mlx->mlx_win);
 	free_obj_tracer(tracer);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
