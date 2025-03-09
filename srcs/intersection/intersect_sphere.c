@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:08:38 by tigran            #+#    #+#             */
-/*   Updated: 2025/03/04 20:18:46 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:27:19 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ static t_vec3	calculate_cofficent(t_ray ray, t_sphere_ptr sphere)
 	double	a;
 	double	b;
 	double	c;
+	double	r;
 
+	r = sphere->diameter / 2;
 	oc = vec3_sub(*(ray.origin), *(sphere->cords));
 	a = vec3_dot(*(ray.direction), *(ray.direction));
 	b = 2.0 * vec3_dot(*(ray.direction), oc);
-	c = vec3_dot(oc, oc) - sphere->diameter;
+	c = vec3_dot(oc, oc) - r * r;
 	return ((t_vec3){a, b, c});
 }
 

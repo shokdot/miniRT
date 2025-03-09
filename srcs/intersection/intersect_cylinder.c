@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/03 20:26:31 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:13:40 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	t_vec3	D;
 	t_vec3	C;
 	t_vec3	V;
-	double	r;
 	t_vec3	CO;
 	double	DdotV;
 	double	COdotV;
@@ -56,6 +55,7 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	double	sqrt_disc;
 	double	t1;
 	double	t2;
+	double	r;
 	double	t_candidate;
 	double	check1;
 	double	check2;
@@ -65,8 +65,8 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	C = *(cyl->cords);
 	// Normalize the cylinder's axis
 	V = vec3_norm(*(cyl->norm));
-	r = cyl->diameter / 2.0;
 	CO = vec3_sub(O, C);
+	r = cyl->diameter / 2.0;
 	DdotV = vec3_dot(D, V);
 	COdotV = vec3_dot(CO, V);
 	D_perp = vec3_sub(D, vec3_scale(V, DdotV));
