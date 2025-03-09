@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/09 14:30:22 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:36:11 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static double	check_height(t_ray ray, t_cylinder_ptr cyl, double t)
 {
-	t_vec3	P;
-	t_vec3	CP;
+	t_vec3	p;
+	t_vec3	cp;
 	double	proj;
 
 	if (t <= EPSILION)
 		return (-1);
-	P = vec3_add(*(ray.origin), vec3_scale(*(ray.direction), t));
-	CP = vec3_sub(P, *(cyl->cords));
-	proj = vec3_dot(CP, vec3_norm(*(cyl->norm)));
+	p = vec3_add(*(ray.origin), vec3_scale(*(ray.direction), t));
+	cp = vec3_sub(p, *(cyl->cords));
+	proj = vec3_dot(cp, vec3_norm(*(cyl->norm)));
 	if (fabs(proj) <= cyl->height / 2.0)
 		return (t);
 	return (-1);
