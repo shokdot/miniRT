@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_discriminant.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:05:36 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/03 00:33:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:22:39 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
