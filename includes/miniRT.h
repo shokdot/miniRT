@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/09 14:29:56 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 15:38:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void			free_obj_tracer(t_tracer_ptr tracer);
 void			free_mlx(t_mlx_ptr mlx);
 void			free_scene(t_scene_ptr scene);
 void			free_destroy(t_tracer_ptr tracer);
+void			free_ray(t_ray_ptr ray);
+void			free_lib(t_tracer_ptr tracer);
 
 // free_figures
 void			free_figures(t_list_ptr figures);
