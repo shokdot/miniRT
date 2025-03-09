@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 14:30:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/09 14:31:05 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:43:11 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ t_args2	init_args2(t_ray ray, t_cylinder_ptr cyl)
 {
 	t_args2	args;
 
-	args.O = *(ray.origin);
-	args.D = *(ray.direction);
-	args.C = *(cyl->cords);
-	args.V = vec3_norm(*(cyl->norm));
-	args.CO = vec3_sub(args.O, args.C);
+	args.o = *(ray.origin);
+	args.d = *(ray.direction);
+	args.c = *(cyl->cords);
+	args.v = vec3_norm(*(cyl->norm));
+	args.co = vec3_sub(args.o, args.c);
 	args.r = cyl->diameter / 2.0;
-	args.DdotV = vec3_dot(args.D, args.V);
-	args.COdotV = vec3_dot(args.CO, args.V);
-	args.D_perp = vec3_sub(args.D, vec3_scale(args.V, args.DdotV));
-	args.CO_perp = vec3_sub(args.CO, vec3_scale(args.V, args.COdotV));
-	args.A = vec3_dot(args.D_perp, args.D_perp);
-	args.B = 2.0 * vec3_dot(args.D_perp, args.CO_perp);
-	args.C_val = vec3_dot(args.CO_perp, args.CO_perp) - args.r * args.r;
-	args.sqrt_disc = calculate_discriminant(args.A, args.B, args.C_val);
+	args.ddotv = vec3_dot(args.d, args.v);
+	args.codotv = vec3_dot(args.co, args.v);
+	args.d_perp = vec3_sub(args.d, vec3_scale(args.v, args.ddotv));
+	args.co_perp = vec3_sub(args.co, vec3_scale(args.v, args.codotv));
+	args.a = vec3_dot(args.d_perp, args.d_perp);
+	args.b = 2.0 * vec3_dot(args.d_perp, args.co_perp);
+	args.c_val = vec3_dot(args.co_perp, args.co_perp) - args.r * args.r;
+	args.sqrt_disc = calculate_discriminant(args.a, args.b, args.c_val);
 	return (args);
 }

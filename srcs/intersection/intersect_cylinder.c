@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/09 14:36:11 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:41:52 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	args = init_args2(ray, cyl);
 	if (args.sqrt_disc < 0)
 		return (-1);
-	args.t1 = (-args.B - args.sqrt_disc) / (2.0 * args.A);
-	args.t2 = (-args.B + args.sqrt_disc) / (2.0 * args.A);
+	args.t1 = (-args.b - args.sqrt_disc) / (2.0 * args.a);
+	args.t2 = (-args.b + args.sqrt_disc) / (2.0 * args.a);
 	args.t_candidate = -1;
 	args.check1 = check_height(ray, cyl, args.t1);
 	args.check2 = check_height(ray, cyl, args.t2);
@@ -53,24 +53,24 @@ static double	intersect_cap(t_ray ray, t_cylinder_ptr cyl, int top)
 {
 	t_args1	args;
 
-	args.O = *(ray.origin);
-	args.D = *(ray.direction);
-	args.C = *(cyl->cords);
-	args.V = vec3_norm(*(cyl->norm));
+	args.o = *(ray.origin);
+	args.d = *(ray.direction);
+	args.c = *(cyl->cords);
+	args.v = vec3_norm(*(cyl->norm));
 	args.r = cyl->diameter / 2.0;
 	args.h_half = cyl->height / 2.0;
 	if (top)
-		args.cap_center = vec3_add(args.C, vec3_scale(args.V, args.h_half));
+		args.cap_center = vec3_add(args.c, vec3_scale(args.v, args.h_half));
 	else
-		args.cap_center = vec3_add(args.C, vec3_scale(args.V, -args.h_half));
-	args.DdotV = vec3_dot(args.D, args.V);
-	if (fabs(args.DdotV) < EPSILION)
+		args.cap_center = vec3_add(args.c, vec3_scale(args.v, -args.h_half));
+	args.ddotv = vec3_dot(args.d, args.v);
+	if (fabs(args.ddotv) < EPSILION)
 		return (-1);
-	args.t = vec3_dot(vec3_sub(args.cap_center, args.O), args.V) / args.DdotV;
+	args.t = vec3_dot(vec3_sub(args.cap_center, args.o), args.v) / args.ddotv;
 	if (args.t <= EPSILION)
 		return (-1);
-	args.P = vec3_add(args.O, vec3_scale(args.D, args.t));
-	if (vec3_len(vec3_sub(args.P, args.cap_center)) <= args.r)
+	args.p = vec3_add(args.o, vec3_scale(args.d, args.t));
+	if (vec3_len(vec3_sub(args.p, args.cap_center)) <= args.r)
 		return (args.t);
 	return (-1);
 }

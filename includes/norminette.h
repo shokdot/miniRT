@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 14:28:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/09 14:31:57 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:39:58 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,32 @@
 
 typedef struct s_args1
 {
-	t_vec3	O;
-	t_vec3	D;
-	t_vec3	C;
-	t_vec3	V;
+	t_vec3	o;
+	t_vec3	d;
+	t_vec3	c;
+	t_vec3	v;
 	double	r;
 	double	h_half;
 	t_vec3	cap_center;
-	double	DdotV;
+	double	ddotv;
 	double	t;
-	t_vec3	P;
+	t_vec3	p;
 }			t_args1;
 
 typedef struct s_args2
 {
-	t_vec3	O;
-	t_vec3	D;
-	t_vec3	C;
-	t_vec3	V;
-	t_vec3	CO;
-	double	DdotV;
-	double	COdotV;
-	t_vec3	D_perp;
-	t_vec3	CO_perp;
-	double	A;
-	double	B;
-	double	C_val;
+	t_vec3	o;
+	t_vec3	d;
+	t_vec3	c;
+	t_vec3	v;
+	t_vec3	co;
+	double	ddotv;
+	double	codotv;
+	t_vec3	d_perp;
+	t_vec3	co_perp;
+	double	a;
+	double	b;
+	double	c_val;
 	double	sqrt_disc;
 	double	t1;
 	double	t2;
