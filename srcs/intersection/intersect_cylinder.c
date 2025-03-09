@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_cylinder.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:04:18 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/09 13:13:40 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:14:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static double	check_height(t_ray ray, t_cylinder_ptr cyl, double t)
+static double	check_height(t_ray ray, t_cylinder_ptr cylinder, double t)
 {
-	t_vec3	P;
-	t_vec3	CP;
+	t_vec3	p;
+	t_vec3	cp;
 	double	proj;
 
 	if (t <= EPSILION)
 		return (-1);
-	P = vec3_add(*(ray.origin), vec3_scale(*(ray.direction), t));
-	CP = vec3_sub(P, *(cyl->cords));
-	proj = vec3_dot(CP, vec3_norm(*(cyl->norm)));
-	// Ensure V is unit-length
-	if (fabs(proj) <= cyl->height / 2.0)
+	p = vec3_add(*(ray.origin), vec3_scale(*(ray.direction), t));
+	cp = vec3_sub(p, *(cylinder->cords));
+	proj = vec3_dot(cp, vec3_norm(*(cylinder->norm)));
+	if (fabs(proj) <= cylinder->height / 2.0)
 		return (t);
 	return (-1);
 }
 
-/*
- * Compute side intersection for an arbitrarily oriented infinite cylinder.
- * We use the formulas:
- *   D_perp = D - (D · V)V,   CO_perp = (O - C) - ((O - C) · V)V.
- * Then solve A t^2 + B t + C = 0.
- */
 static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 {
 	t_vec3	O;
@@ -63,7 +56,6 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	O = *(ray.origin);
 	D = *(ray.direction);
 	C = *(cyl->cords);
-	// Normalize the cylinder's axis
 	V = vec3_norm(*(cyl->norm));
 	CO = vec3_sub(O, C);
 	r = cyl->diameter / 2.0;
@@ -91,14 +83,6 @@ static double	compute_side_intersection(t_ray ray, t_cylinder_ptr cyl)
 	return (t_candidate);
 }
 
-/*
- * Compute intersection with a cap (top or bottom) of the cylinder.
- * y_cap is the coordinate along the cylinder's axis (i.e., projection value)
- * for the cap center. For an arbitrary cylinder, the cap center is:
- *    P_cap = C + (h/2)*V   or   C - (h/2)*V.
- * We compute the ray-plane intersection with the cap, and then check if the
- * distance from the hit point to the cap center is less than or equal to r.
- */
 static double	intersect_cap(t_ray ray, t_cylinder_ptr cyl, int top)
 {
 	t_vec3	O;
@@ -118,12 +102,10 @@ static double	intersect_cap(t_ray ray, t_cylinder_ptr cyl, int top)
 	V = vec3_norm(*(cyl->norm));
 	r = cyl->diameter / 2.0;
 	h_half = cyl->height / 2.0;
-	// Cap center: top if top==1, bottom if top==0.
 	if (top)
 		cap_center = vec3_add(C, vec3_scale(V, h_half));
 	else
 		cap_center = vec3_add(C, vec3_scale(V, -h_half));
-	// Ray-plane intersection:
 	DdotV = vec3_dot(D, V);
 	if (fabs(DdotV) < EPSILION)
 		return (-1);
@@ -136,17 +118,13 @@ static double	intersect_cap(t_ray ray, t_cylinder_ptr cyl, int top)
 	return (-1);
 }
 
-/*
- * Compute the intersection with the cylinder caps.
- * Returns the smallest positive t among the two caps.
- */
-static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cyl)
+static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cylinder)
 {
 	double	t_top;
 	double	t_bottom;
 
-	t_top = intersect_cap(ray, cyl, 1);
-	t_bottom = intersect_cap(ray, cyl, 0);
+	t_top = intersect_cap(ray, cylinder, 1);
+	t_bottom = intersect_cap(ray, cylinder, 0);
 	if (t_top > EPSILION && t_bottom > EPSILION)
 		return (fmin(t_top, t_bottom));
 	else if (t_top > EPSILION)
@@ -156,18 +134,13 @@ static double	compute_cap_intersection(t_ray ray, t_cylinder_ptr cyl)
 	return (-1);
 }
 
-/*
- * Final intersection function for a finite, arbitrarily oriented cylinder.
-
-	* It computes the side and cap intersections and returns the nearest positive t.
- */
-double	intersect_cylinder(t_ray ray, t_cylinder_ptr cyl)
+double	intersect_cylinder(t_ray ray, t_cylinder_ptr cylinder)
 {
 	double	t_side;
 	double	t_cap;
 
-	t_side = compute_side_intersection(ray, cyl);
-	t_cap = compute_cap_intersection(ray, cyl);
+	t_side = compute_side_intersection(ray, cylinder);
+	t_cap = compute_cap_intersection(ray, cylinder);
 	if (t_side > EPSILION && t_cap > EPSILION)
 		return (fmin(t_side, t_cap));
 	else if (t_side > EPSILION)
