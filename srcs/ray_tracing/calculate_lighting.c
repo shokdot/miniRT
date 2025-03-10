@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:58:55 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 16:59:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:14:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ bool	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
 		t_scene_ptr scene, t_node_ptr self)
 {
 	t_vec3		shadow_origin;
-	t_ray		shadow_ray;
+	t_ray_ptr	shadow_ray;
 	t_node_ptr	node;
 	double		t;
 
 	shadow_origin = vec3_add(hit_point, vec3_scale(light_dir, EPSILION));
-	shadow_ray = *init_ray(shadow_origin, light_dir); // leaks
+	shadow_ray = init_ray(shadow_origin, light_dir);
 	node = scene->figures->head;
 	while (node != NULL)
 	{
@@ -30,12 +30,12 @@ bool	is_occluded(t_vec3 hit_point, t_vec3 light_dir, double light_distance,
 			node = node->next;
 			continue ;
 		}
-		t = check_intersection(node, shadow_ray);
+		t = check_intersection(node, *shadow_ray);
 		if (t > EPSILION && t < light_distance - EPSILION)
-			return (true);
+			return (free_ray(shadow_ray), true);
 		node = node->next;
 	}
-	return (false);
+	return (free_ray(shadow_ray), false);
 }
 
 double	calculate_lighting(t_vec3 hit_point, t_vec3 normal, t_scene_ptr scene,

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:15:08 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 17:36:47 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:07:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	render_pixel(int x, int y, t_ray_ptr ray, t_tracer_ptr tracer)
 
 void	tracing(t_tracer_ptr tracer)
 {
-	t_ray_ptr	ray;
 	int			y;
 	int			x;
+	t_ray_ptr	ray;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -72,7 +72,7 @@ void	tracing(t_tracer_ptr tracer)
 		{
 			ray = ray_calculate(x, y, tracer);
 			render_pixel(x, y, ray, tracer);
-			free(ray);
+			free_ray(ray);
 			x++;
 		}
 		y++;

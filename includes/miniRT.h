@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 17:54:53 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:06:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void			free_mlx(t_mlx_ptr mlx);
 void			free_scene(t_scene_ptr scene);
 void			free_destroy(t_tracer_ptr tracer);
 void			free_lib(t_tracer_ptr tracer);
+void			free_ray(t_ray_ptr ray);
 
 // free_figures
 void			free_figures(t_list_ptr figures);
