@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 23:08:40 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/23 11:02:10 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:08:28 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_scene_ptr	init_scene(void)
 	scene->ambient = NULL;
 	scene->camera = NULL;
 	scene->light = NULL;
+	scene->vcam = NULL;
+	scene->vplane = NULL;
 	scene->figures = init_lt();
 	scene->amb_count = 0;
 	scene->cam_count = 0;
