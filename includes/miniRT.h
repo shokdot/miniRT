@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/04 18:18:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:56:19 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,9 @@ int				render(t_tracer_ptr tracer);
 // tracer utils
 void			put_pixel(t_tracer_ptr tracer, int x, int y, int color);
 t_vec3			get_cylinder_normal(t_cylinder_ptr obj, t_vec3 hit_point);
+t_vec3			calc_cap_center(t_cylinder_ptr cylinder, int top);
+t_vec3			cyl_compute_cofficent(t_ray ray, t_cylinder_ptr cyl);
+double			compute_side_candidate(t_ray ray, t_cylinder_ptr cyl, double t1,
+					double t2);
 
 #endif
