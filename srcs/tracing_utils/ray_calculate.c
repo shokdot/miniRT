@@ -6,16 +6,28 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 19:38:01 by tyavroya          #+#    #+#             */
-/*   Updated: 2025/03/04 18:02:05 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:51:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_vec3	ray_calculate(t_ray ray, float t)
+t_ray_ptr	ray_calculate(int x, int y, t_tracer_ptr tracer)
 {
-	t_vec3	res;
+	double	ray_x;
+	double	ray_y;
+	t_vec3	ray_dir;
+	t_vec3	cam_cords;
 
-	res = vec3_add_num(*(ray.origin), vec3_dot_num(*(ray.direction), t));
-	return (res);
+	cam_cords = *(tracer->scene->camera->cords);
+	ray_x = (x - WIDTH / 2.0) * tracer->scene->vplane->pixel_dx;
+	ray_y = (HEIGHT / 2.0 - y) * tracer->scene->vplane->pixel_dy;
+	ray_dir = vec3_norm((t_vec3){tracer->scene->vcam->forward.x + ray_x
+			* tracer->scene->vcam->right.x + ray_y * tracer->scene->vcam->up.x,
+			tracer->scene->vcam->forward.y + ray_x
+			* tracer->scene->vcam->right.y + ray_y * tracer->scene->vcam->up.y,
+			tracer->scene->vcam->forward.z + ray_x
+			* tracer->scene->vcam->right.z + ray_y
+			* tracer->scene->vcam->up.z});
+	return (init_ray(cam_cords, ray_dir));
 }

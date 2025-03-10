@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 11:56:19 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:48:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void			init_vplane(t_tracer_ptr tracer);
 t_vec3_ptr		init_vec3(char *line);
 t_tracer_ptr	init_data(void);
 t_scene_ptr		init_scene(void);
+void			init_vcam(t_tracer_ptr tracer);
 t_ray_ptr		init_ray(t_vec3 origin, t_vec3 direction);
 
 // fill_data
@@ -115,7 +116,7 @@ void			free_camera(t_camera_ptr obj);
 void			free_light(t_light_ptr obj);
 
 // render
-int				render(t_tracer_ptr tracer);
+void			render(t_tracer_ptr tracer);
 
 // tracer utils
 void			put_pixel(t_tracer_ptr tracer, int x, int y, int color);
@@ -124,5 +125,6 @@ t_vec3			calc_cap_center(t_cylinder_ptr cylinder, int top);
 t_vec3			cyl_compute_cofficent(t_ray ray, t_cylinder_ptr cyl);
 double			compute_side_candidate(t_ray ray, t_cylinder_ptr cyl, double t1,
 					double t2);
+t_ray_ptr		ray_calculate(int x, int y, t_tracer_ptr tracer);
 
 #endif
