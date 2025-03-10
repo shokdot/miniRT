@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 17:00:09 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:32:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void			free_light(t_light_ptr obj);
 void			render(t_tracer_ptr tracer);
 double			calculate_lighting(t_vec3 hit_point, t_vec3 normal,
 					t_scene_ptr scene, t_node_ptr self);
+void			tracing(t_tracer_ptr tracer);
 
 // tracer utils
 void			put_pixel(t_tracer_ptr tracer, int x, int y, int color);
