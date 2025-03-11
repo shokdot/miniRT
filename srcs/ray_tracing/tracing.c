@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:15:08 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 18:07:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:39:03 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	tracing(t_tracer_ptr tracer)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ray = ray_calculate(x, y, tracer);
+			ray = ray_calculate(WIDTH - x - 1, y, tracer);
 			render_pixel(x, y, ray, tracer);
 			free_ray(ray);
 			x++;
