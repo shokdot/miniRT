@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 22:47:15 by healeksa          #+#    #+#             */
-/*   Updated: 2025/02/26 19:29:57 by tigran           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:22:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef t_camera			*t_camera_ptr;
 
 typedef struct s_light		t_light;
 typedef t_light				*t_light_ptr;
-
 
 struct						s_ambient
 {

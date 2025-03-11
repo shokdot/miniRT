@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/11 14:35:54 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:33:40 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include <stdlib.h>
 # include <tracer.h>
 # include <unistd.h>
-
-# define UNUSED __attribute__((unused))
 
 void			args_check(int argc, char **argv);
 void			parsing(char *filename, t_tracer_ptr data);
