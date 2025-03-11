@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 10:22:45 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 10:35:36 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:54:46 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <libft.h>
 
 void	*ft_malloc(size_t size)
 {

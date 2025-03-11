@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 10:38:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/12/11 11:13:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:55:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <libft.h>
 
 int	ft_open(const char *pathname, int flags)
 {
