@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:36:13 by healeksa          #+#    #+#             */
-/*   Updated: 2025/01/17 13:58:31 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:10:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@ int	is_spaces(char c)
 void	tab_to_space(char *line)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
+	flag = 0;
 	while (line[i])
 	{
 		if (is_spaces(line[i]))
 			line[i] = ' ';
-		else if (i != 0 && line[i] == '\n')
+		else if (line[i] != ' ' && ft_isprint(line[i]))
+			flag = 1;
+		else if (i != 0 && line[i] == '\n' && flag == 1)
 			line[i] = '\0';
-		i++;
+		++i;
 	}
 }
