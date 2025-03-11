@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:02:17 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 18:06:21 by healeksa         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:35:54 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void			fill_plane_struct(char **line, t_tracer_ptr tracer);
 void			fill_sphere_struct(char **line, t_tracer_ptr tracermkae);
 
 // free
+void			free_open_err(t_tracer_ptr tracer);
 void			free_matrix(char **matrix);
 void			free_empty_map(t_tracer_ptr tracer);
 void			free_line_map(char **line, t_tracer_ptr tracer);

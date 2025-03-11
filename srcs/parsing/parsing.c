@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 23:01:38 by healeksa          #+#    #+#             */
-/*   Updated: 2025/03/10 19:18:16 by tyavroya         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:36:19 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ void	parse_line(t_tracer_ptr tracer)
 
 void	parsing(char *filename, t_tracer_ptr tracer)
 {
-	tracer->fd = ft_open(filename, O_RDONLY);
+	tracer->fd = open(filename, O_RDONLY);
+	if (tracer->fd < 0)
+		free_open_err(tracer);
 	parse_line(tracer);
 	close(tracer->fd);
 	check_obj_count(tracer);
